@@ -1,180 +1,187 @@
 declare class Vector2
+    __call: (x: number, y: number) -> Vector2
 end
+declare Vector2: (x: number, y: number) -> Vector2
 
 declare class Vector3
-	create: (x: number?, y: number?, z: number?) -> Vector3
-	cross: (vector: Vector3) -> Vector3
-	dot: (vector: Vector3) -> number
-	normalize: () -> boolean
-	getX: () -> number
-	getY: () -> number
-	getZ: () -> number
-	setX: (x: number) -> boolean
-	setY: (y: number) -> boolean
-	setZ: (z: number) -> boolean
-	getNormalized: () -> Vector3
-	getSquaredLength: () -> Vector3
-	getLength: () -> any
-	intersectsSegmentTriangle: (segmentDir: Vector3, triVert0: Vector3, triVert1: Vector3, triVert2: Vector3) -> Vector3
-	intersectsSegmentTriangle: (origin: Vector3, segmentDir: Vector3, triVert1: Vector3, triVert2: Vector3) -> Vector3
+    __call: (x: number, y: number, z: number) -> Vector3
+
+    create: (x: number?, y: number?, z: number?) -> Vector3
+    cross: (vector: Vector3) -> Vector3
+    dot: (vector: Vector3) -> number
+    normalize: () -> boolean
+    getX: () -> number
+    getY: () -> number
+    getZ: () -> number
+    setX: (x: number) -> boolean
+    setY: (y: number) -> boolean
+    setZ: (z: number) -> boolean
+    getNormalized: () -> Vector3
+    getSquaredLength: () -> Vector3
+    getLength: () -> any
+    intersectsSegmentTriangle: (segmentDir: Vector3, triVert0: Vector3, triVert1: Vector3, triVert2: Vector3) -> Vector3
+    intersectsSegmentTriangle: (origin: Vector3, segmentDir: Vector3, triVert1: Vector3, triVert2: Vector3) -> Vector3
 end
+declare Vector3: (x: number, y: number, z: number) -> Vector3
 
 declare class Vector4
+__call: (x: number, y: number, z: number, w: number) -> Vector4
 end
+declare Vector4: (x: number, y: number, z: number, w: number) -> Vector4
 
 declare class ACL
-	name: string
+    name: string
 
-	__call: () -> ACL
-	get: (aclName: string) -> ACL
-	list: () -> { [number]: ACL }
+    __call: () -> ACL
+    get: (aclName: string) -> ACL
+    list: () -> { [number]: ACL }
 
-	function destroy(self): boolean
-	function getName(self): string
-	function getRight(self, rightName: string): string
-	function setRight(self, rightName: string, hasAccess: boolean): boolean
-	function listRights(self, allowedType: string): { [number]: string }
-	function removeRight(self, rightName: string): boolean
+    function destroy(self): boolean
+    function getName(self): string
+    function getRight(self, rightName: string): string
+    function setRight(self, rightName: string, hasAccess: boolean): boolean
+    function listRights(self, allowedType: string): { [number]: string }
+    function removeRight(self, rightName: string): boolean
 end
 declare ACL: ACL
 
 declare class ACLGroup
-	name: string
-	objects: { [any]: any }
-	aclList: { [any]: any }
+    name: string
+    objects: { [any]: any }
+    aclList: { [any]: any }
 
-	__call: () -> ACLGroup
-	get: (groupName: string) -> ACLGroup
-	list: () -> { [number]: ACL }
+    __call: () -> ACLGroup
+    get: (groupName: string) -> ACLGroup
+    list: () -> { [number]: ACL }
 
 
-	function destroy(self): boolean
-	function addACL(self, acl: ACL): boolean
-	function addObject(self, theObjectName: string): boolean
-	function getName(self): string
-	function listACL(self): { [any]: any }
-	function listObjects(self): { [any]: any }
-	function removeACL(self, acl: ACL): boolean
-	function removeObject(self, theObjectString: string): boolean
-	function doesContainObject(self, theGroup: ACLGroup): boolean
+    function destroy(self): boolean
+    function addACL(self, acl: ACL): boolean
+    function addObject(self, theObjectName: string): boolean
+    function getName(self): string
+    function listACL(self): { [any]: any }
+    function listObjects(self): { [any]: any }
+    function removeACL(self, acl: ACL): boolean
+    function removeObject(self, theObjectString: string): boolean
+    function doesContainObject(self, theGroup: ACLGroup): boolean
 end
 declare ACLGroup: ACLGroup
 
 declare class Element
-	alpha: number
-	angularVelocity: Vector3
-	attached: boolean
-	collisions: boolean
-	colShape: ColShape
-	dimension: number
-	distanceFromCentreOfMassToBaseOfModel: number
-	doubleSided: boolean
-	elementsWithin: { [number]: Element }
-	frozen: boolean
-	health: number
-	id: string
-	interior: number
-	inWater: boolean
-	lighting: number
-	localElement: boolean
-	lowLOD: Element
-	matrix: { [number]: { [number]: number } }
-	model: number
-	onScreen: boolean
-	parent: Element
-	position: Vector3
-	radius: number
-	rotation: Vector3
-	streamable: boolean
-	syncedByLocalPlayer: boolean
-	type: string
-	velocity: Vector3
-	waitingForGroundToLoad: boolean
+    alpha: number
+    angularVelocity: Vector3
+    attached: boolean
+    collisions: boolean
+    colShape: ColShape
+    dimension: number
+    distanceFromCentreOfMassToBaseOfModel: number
+    doubleSided: boolean
+    elementsWithin: { [number]: Element }
+    frozen: boolean
+    health: number
+    id: string
+    interior: number
+    inWater: boolean
+    lighting: number
+    localElement: boolean
+    lowLOD: Element
+    matrix: { [number]: { [number]: number } }
+    model: number
+    onScreen: boolean
+    parent: Element
+    position: Vector3
+    radius: number
+    rotation: Vector3
+    streamable: boolean
+    syncedByLocalPlayer: boolean
+    type: string
+    velocity: Vector3
+    waitingForGroundToLoad: boolean
 
-	__call: (elementType: string, elementID: string?) -> Element
-	getByID: (id: string, index: number?) -> Element | boolean
-	getAllByType: (type: string, startat: Element?) -> { [number]: Element }
-	getAllByType: (type: string, startat: Element?, streamedIn: boolean?) -> { [number]: Element }
-	getByIndex: (type: string, index: number) -> Element
+    __call: (elementType: string, elementID: string?) -> Element
+    getByID: (id: string, index: number?) -> Element | boolean
+    getAllByType: (type: string, startat: Element?) -> { [number]: Element }
+    getAllByType: (type: string, startat: Element?, streamedIn: boolean?) -> { [number]: Element }
+    getByIndex: (type: string, index: number) -> Element
 
-	function addDataSubscriber(self, element: Element, key: string, player: Player): boolean
-	function attach(self, theAttachToElement: Element, xPosOffset: number?, yPosOffset: number?, zPosOffset: number?, xRotOffset: number?, yRotOffset: number?, zRotOffset: number?): boolean
-	function clearVisibility(self): boolean
-	function clone(self, element: Element, xPos: number?, yPos: number?, zPos: number?, cloneChildren: boolean?): Element
-	function destroy(self): boolean
-	function detach(self, theAttachToElement: Element): boolean
-	function getAllData(self): { [string]: any }
-	function getAlpha(self): number
-	function getAngularVelocity(self): (number, number, number)
-	function getAttachedElements(self): { [number]: Element }
-	function getAttachedOffsets(self): (number, number, number, number, number, number)
-	function getAttachedTo(self): Element
-	function getBoundingBox(self): (number, number, number, number, number, number)
-	function getChild(self, index: number): Element | boolean
-	function getChildren(self, type: string?): { [number]: Element }
-	function getChildrenCount(self): number
-	function getCollisionsEnabled(self): boolean
-	function getColShape(self): ColShape
-	function getData(self, key: string, inherit: boolean?): any
-	function getDimension(self): number
-	function getDistanceFromCentreOfMassToBaseOfModel(self): number
-	function getElementLighting(self): number
-	function getElementsWithin(self, elemType: string?): { [number]: Element }
-	function getHealth(self): number
-	function getID(self): string
-	function getInterior(self): number
-	function getLowLOD(self): Element
-	function getMatrix(self): { [number]: { [number]: number } }
-	function getModel(self): number
-	function getParent(self): Element
-	function getPosition(self): (number, number, number)
-	function getRadius(self): number
-	function getRotation(self): (number, number, number)
-	function getSyncer(self): Element
-	function getType(self): string
-	function getVelocity(self): (number, number, number)
-	function getWithinRange(self, x: number, y: number, z: number, range: number, elemType: string?, interior: number?, dimension: number?): { [number]: Element }
-	function getZoneName(self, citiesonly: boolean): string
-	function hasDataSubscriber(self, element: Element, key: string, player: Player): boolean
-	function isAttached(self): boolean
-	function isCallPropagationEnabled(self): boolean
-	function isCollidableWith(self, withElement: Element): boolean
-	function isDoubleSided(self): boolean
-	function isFrozen(self): boolean
-	function isInWater(self): boolean
-	function isLocal(self): boolean
-	function isLowLOD(self): boolean
-	function isOnScreen(self): boolean
-	function isStreamable(self): boolean
-	function isSyncer(self): boolean
-	function isVisibleTo(self, element: Element, visibleTo: Element): boolean
-	function isWaitingForGroundToLoad(self): boolean
-	function isWithinColShape(self, colshape: ColShape): boolean
-	function removeData(self, key: string): boolean
-	function removeDataSubscriber(self, element: Element, key: string, player: Player): boolean
-	function setAlpha(self, alpha: number): boolean
-	function setAngularVelocity(self, rx: number, ry: number, rz: number): boolean
-	function setAttachedOffsets(self, xPosOffset: number?, yPosOffset: number?, zPosOffset: number?, xRotOffset: number?, yRotOffset: number?, zRotOffset: number?): boolean
-	function setCallPropagationEnabled(self, enabled: boolean): boolean
-	function setCollidableWith(self, withElement: Element, enabled: boolean): boolean
-	function setCollisionsEnabled(self, enabled: boolean): boolean
-	function setData(self, key: string, value: any, synchronize: boolean): boolean
-	function setDimension(self, dimension: number): boolean
-	function setDoubleSided(self, enable: boolean): boolean
-	function setFrozen(self, freezeStatus: boolean): boolean
-	function setHealth(self, newHealth: number): boolean
-	function setID(self, name: string): boolean
-	function setInterior(self, interior: number, x: number?, y: number?, z: number?): boolean
-	function setLowLOD(self, lowLODElement: Element): boolean
-	function setMatrix(self, matrix: { [number]: { [number]: number } }): boolean
-	function setModel(self, model: number): boolean
-	function setParent(self, parent: Element): boolean
-	function setPosition(self, x: number, y: number, z: number, warp: boolean?): boolean
-	function setRotation(self, rotX: number, rotY: number, rotZ: number, rotOrder: string?, conformPedRotation: boolean?): boolean
-	function setStreamable(self, streamable: boolean): boolean
-	function setSyncer(self, player: Player): boolean
-	function setVelocity(self, speedX: number, speedY: number, speedZ: number): boolean
-	function setVisibleTo(self, visibleTo: Element, visible: boolean): boolean
+    function addDataSubscriber(self, element: Element, key: string, player: Player): boolean
+    function attach(self, theAttachToElement: Element, xPosOffset: number?, yPosOffset: number?, zPosOffset: number?, xRotOffset: number?, yRotOffset: number?, zRotOffset: number?): boolean
+    function clearVisibility(self): boolean
+    function clone(self, element: Element, xPos: number?, yPos: number?, zPos: number?, cloneChildren: boolean?): Element
+    function destroy(self): boolean
+    function detach(self, theAttachToElement: Element): boolean
+    function getAllData(self): { [string]: any }
+    function getAlpha(self): number
+    function getAngularVelocity(self): (number, number, number)
+    function getAttachedElements(self): { [number]: Element }
+    function getAttachedOffsets(self): (number, number, number, number, number, number)
+    function getAttachedTo(self): Element
+    function getBoundingBox(self): (number, number, number, number, number, number)
+    function getChild(self, index: number): Element | boolean
+    function getChildren(self, type: string?): { [number]: Element }
+    function getChildrenCount(self): number
+    function getCollisionsEnabled(self): boolean
+    function getColShape(self): ColShape
+    function getData(self, key: string, inherit: boolean?): any
+    function getDimension(self): number
+    function getDistanceFromCentreOfMassToBaseOfModel(self): number
+    function getElementLighting(self): number
+    function getElementsWithin(self, elemType: string?): { [number]: Element }
+    function getHealth(self): number
+    function getID(self): string
+    function getInterior(self): number
+    function getLowLOD(self): Element
+    function getMatrix(self): { [number]: { [number]: number } }
+    function getModel(self): number
+    function getParent(self): Element
+    function getPosition(self): (number, number, number)
+    function getRadius(self): number
+    function getRotation(self): (number, number, number)
+    function getSyncer(self): Element
+    function getType(self): string
+    function getVelocity(self): (number, number, number)
+    function getWithinRange(self, x: number, y: number, z: number, range: number, elemType: string?, interior: number?, dimension: number?): { [number]: Element }
+    function getZoneName(self, citiesonly: boolean): string
+    function hasDataSubscriber(self, element: Element, key: string, player: Player): boolean
+    function isAttached(self): boolean
+    function isCallPropagationEnabled(self): boolean
+    function isCollidableWith(self, withElement: Element): boolean
+    function isDoubleSided(self): boolean
+    function isFrozen(self): boolean
+    function isInWater(self): boolean
+    function isLocal(self): boolean
+    function isLowLOD(self): boolean
+    function isOnScreen(self): boolean
+    function isStreamable(self): boolean
+    function isSyncer(self): boolean
+    function isVisibleTo(self, element: Element, visibleTo: Element): boolean
+    function isWaitingForGroundToLoad(self): boolean
+    function isWithinColShape(self, colshape: ColShape): boolean
+    function removeData(self, key: string): boolean
+    function removeDataSubscriber(self, element: Element, key: string, player: Player): boolean
+    function setAlpha(self, alpha: number): boolean
+    function setAngularVelocity(self, rx: number, ry: number, rz: number): boolean
+    function setAttachedOffsets(self, xPosOffset: number?, yPosOffset: number?, zPosOffset: number?, xRotOffset: number?, yRotOffset: number?, zRotOffset: number?): boolean
+    function setCallPropagationEnabled(self, enabled: boolean): boolean
+    function setCollidableWith(self, withElement: Element, enabled: boolean): boolean
+    function setCollisionsEnabled(self, enabled: boolean): boolean
+    function setData(self, key: string, value: any, synchronize: boolean): boolean
+    function setDimension(self, dimension: number): boolean
+    function setDoubleSided(self, enable: boolean): boolean
+    function setFrozen(self, freezeStatus: boolean): boolean
+    function setHealth(self, newHealth: number): boolean
+    function setID(self, name: string): boolean
+    function setInterior(self, interior: number, x: number?, y: number?, z: number?): boolean
+    function setLowLOD(self, lowLODElement: Element): boolean
+    function setMatrix(self, matrix: { [number]: { [number]: number } }): boolean
+    function setModel(self, model: number): boolean
+    function setParent(self, parent: Element): boolean
+    function setPosition(self, x: number, y: number, z: number, warp: boolean?): boolean
+    function setRotation(self, rotX: number, rotY: number, rotZ: number, rotOrder: string?, conformPedRotation: boolean?): boolean
+    function setStreamable(self, streamable: boolean): boolean
+    function setSyncer(self, player: Player): boolean
+    function setVelocity(self, speedX: number, speedY: number, speedZ: number): boolean
+    function setVisibleTo(self, visibleTo: Element, visible: boolean): boolean
 
 end
 declare Element: Element
@@ -183,309 +190,309 @@ declare class Team extends Element
 end
 
 declare class ColShape extends Element
-	shapeType: number
-	elementsWithin: { [number]: Element }
+    shapeType: number
+    elementsWithin: { [number]: Element }
 
-	Circle: (x: number, y: number, index: number) -> ColShape
-	Cuboid: (x: number, y: number, z: number, width: number, depth: number, height: number) -> ColShape
-	Polygon: (centerX: number, centerY: number, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, ...number) -> ColShape
-	Rectangle: (x: number, y: number, width: number, height: number) -> ColShape
-	Sphere: (x: number, y: number, radius: number) -> ColShape
-	Tube: (x: number, y: number, radius: number, height: number) -> ColShape
+    Circle: (x: number, y: number, index: number) -> ColShape
+    Cuboid: (x: number, y: number, z: number, width: number, depth: number, height: number) -> ColShape
+    Polygon: (centerX: number, centerY: number, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, ...number) -> ColShape
+    Rectangle: (x: number, y: number, width: number, height: number) -> ColShape
+    Sphere: (x: number, y: number, radius: number) -> ColShape
+    Tube: (x: number, y: number, radius: number, height: number) -> ColShape
 
-	function addPoint(self, x: number, y: number, index: number?): boolean
-	function getHeight(self): number
-	function getPoints(self): { [number]: number }
-	function getPointPosition(self, index: number): (number, number)
-	function getShapeType(self): number
-	function getRadius(self): number
-	function getSize(self): (number, number, number)
-	function getElementsWithin(self): { [number]: Element }
-	function isInside(self, x: number, y: number, z: number): boolean
-	function removePoint(self, index: number): boolean
-	function setHeight(self, floor: number, ceil: number): boolean
-	function setPointPosition(self, index: number, x: number, y: number): boolean
-	function setRadius(self, radius: number): boolean
-	function setSize(self, width: number, depth: number, height: number): boolean
+    function addPoint(self, x: number, y: number, index: number?): boolean
+    function getHeight(self): number
+    function getPoints(self): { [number]: number }
+    function getPointPosition(self, index: number): (number, number)
+    function getShapeType(self): number
+    function getRadius(self): number
+    function getSize(self): (number, number, number)
+    function getElementsWithin(self): { [number]: Element }
+    function isInside(self, x: number, y: number, z: number): boolean
+    function removePoint(self, index: number): boolean
+    function setHeight(self, floor: number, ceil: number): boolean
+    function setPointPosition(self, index: number, x: number, y: number): boolean
+    function setRadius(self, radius: number): boolean
+    function setSize(self, width: number, depth: number, height: number): boolean
 end
 declare ColShape: ColShape
 
 declare class Player extends Element
-	blurLevel: number
-	mapForced: boolean
-	money: number
-	name: string
-	nametagShowing: boolean
-	nametagText: string
-	ping: number
-	team: Team
-	wantedLevel: number
-	account: Player
+    blurLevel: number
+    mapForced: boolean
+    money: number
+    name: string
+    nametagShowing: boolean
+    nametagText: string
+    ping: number
+    team: Team
+    wantedLevel: number
+    account: Player
 
-	function ban(self, IP: boolean?, Username: boolean?, Serial: boolean?, responsiblePlayer: Player? | string?, reason: string?, seconds: number?): Ban
-	function forceMap(self, forceOn: boolean): boolean
-	function getBlurLevel(self): number
-	function getMapOpacity(self): number
-	function getMoney(self): number
-	function getName(self): string
-	function getNametagColor(self): (number, number, number)
-	function getNametagText(self): string
-	function getPing(self): number
-	function getTeam(self): Team
-	function getWantedLevel(self): number
-	function giveMoney(self, amount: number): boolean
-	function isMapForced(self): boolean
-	function isNametagShowing(self): boolean
-	function isVoiceEnabled(self): boolean
-	function setBlurLevel(self): boolean
-	function setHudComponentVisible(self, component: string, show: boolean): boolean
-	function setMoney(self, amount: number, instant: boolean?): boolean
-	function setNametagColor(self, state: boolean): boolean
-	function setNametagColor(self, red: number, green: number, blue: number): boolean
-	function setNametagShowing(self, showing: boolean): boolean
-	function setNametagText(self, text: string): boolean
-	function takeMoney(self, amount: number): boolean
-	function getAccount(self): Player
-	function logIn(self): boolean
-	function logOut(self): boolean
+    function ban(self, IP: boolean?, Username: boolean?, Serial: boolean?, responsiblePlayer: Player? | string?, reason: string?, seconds: number?): Ban
+    function forceMap(self, forceOn: boolean): boolean
+    function getBlurLevel(self): number
+    function getMapOpacity(self): number
+    function getMoney(self): number
+    function getName(self): string
+    function getNametagColor(self): (number, number, number)
+    function getNametagText(self): string
+    function getPing(self): number
+    function getTeam(self): Team
+    function getWantedLevel(self): number
+    function giveMoney(self, amount: number): boolean
+    function isMapForced(self): boolean
+    function isNametagShowing(self): boolean
+    function isVoiceEnabled(self): boolean
+    function setBlurLevel(self): boolean
+    function setHudComponentVisible(self, component: string, show: boolean): boolean
+    function setMoney(self, amount: number, instant: boolean?): boolean
+    function setNametagColor(self, state: boolean): boolean
+    function setNametagColor(self, red: number, green: number, blue: number): boolean
+    function setNametagShowing(self, showing: boolean): boolean
+    function setNametagText(self, text: string): boolean
+    function takeMoney(self, amount: number): boolean
+    function getAccount(self): Player
+    function logIn(self): boolean
+    function logOut(self): boolean
 end
 
 declare class Account
-	data: { [string]: number|string|boolean }
-	guest: boolean
-	id: number
-	ip: string
-	name: string
-	password: string
-	player: Player
-	serial: string
+    data: { [string]: number|string|boolean }
+    guest: boolean
+    id: number
+    ip: string
+    name: string
+    password: string
+    player: Player
+    serial: string
 
-	add: (name: string, password: string, allowCaseVariations: boolean?) -> Account
-	getAll: () -> { [number]: Account }
-	getAllByData: (dataName: string, value: string) -> { [number]: Account } | boolean
-	getAllByIP: (ip: string) -> { [number]: Account } | boolean
-	getAllBySerial: () -> { [number]: Account } | boolean
+    add: (name: string, password: string, allowCaseVariations: boolean?) -> Account
+    getAll: () -> { [number]: Account }
+    getAllByData: (dataName: string, value: string) -> { [number]: Account } | boolean
+    getAllByIP: (ip: string) -> { [number]: Account } | boolean
+    getAllBySerial: () -> { [number]: Account } | boolean
 
-	function copyDataTo(self, fromAccount: Account): boolean
-	function getAllData(self): { [string]: number|string|boolean }
-	function getData(self, key: string): string
-	function getID(self): number
-	function getIP(self): string
-	function getName(self): string
-	function getPlayer(self): Player
-	function getSerial(self): string
-	function isGuest(self): boolean
-	function remove(self): boolean
-	function setData(self, key: string, value: number|string|boolean): boolean
-	function setName(self, name: string, allowCaseVariations: boolean): boolean
-	function setPassword(self, password: string): boolean
+    function copyDataTo(self, fromAccount: Account): boolean
+    function getAllData(self): { [string]: number|string|boolean }
+    function getData(self, key: string): string
+    function getID(self): number
+    function getIP(self): string
+    function getName(self): string
+    function getPlayer(self): Player
+    function getSerial(self): string
+    function isGuest(self): boolean
+    function remove(self): boolean
+    function setData(self, key: string, value: number|string|boolean): boolean
+    function setName(self, name: string, allowCaseVariations: boolean): boolean
+    function setPassword(self, password: string): boolean
 end
 declare Account: Account
 
 declare class Ban
-	admin: string
-	ip: string
-	reason: string
-	serial: string
-	time: number
+    admin: string
+    ip: string
+    reason: string
+    serial: string
+    time: number
 
-	__call: (IP: string?, Username: string?, Serial: string?, responsibleElement: Player?, reason: string?, seconds: number?) -> Ban
-	getList: () -> { [number]: Ban }
+    __call: (IP: string?, Username: string?, Serial: string?, responsibleElement: Player?, reason: string?, seconds: number?) -> Ban
+    getList: () -> { [number]: Ban }
 
-	function ban(self, bannedPlayer: Player, IP: boolean?, Username: boolean?, Serial: boolean?, responsiblePlayer: Player? | string?, reason: string?, seconds: number?): Ban
-	function getAdmin(self): string
-	function getIP(self): string
-	function getReason(self): string
-	function getSerial(self): string
-	function getTime(self): number
-	function setAdmin(self, admin: string): boolean
-	function setReason(self, reason: string): boolean
-	function setUnbanTime(self, time: number): boolean
-	function remove(self, responsibleElement: Player): boolean
+    function ban(self, bannedPlayer: Player, IP: boolean?, Username: boolean?, Serial: boolean?, responsiblePlayer: Player? | string?, reason: string?, seconds: number?): Ban
+    function getAdmin(self): string
+    function getIP(self): string
+    function getReason(self): string
+    function getSerial(self): string
+    function getTime(self): number
+    function setAdmin(self, admin: string): boolean
+    function setReason(self, reason: string): boolean
+    function setUnbanTime(self, time: number): boolean
+    function remove(self, responsibleElement: Player): boolean
 end
 
 declare class Vehicle extends Element
-	blown: boolean
-	compatibleUpgrades: { [number]: any }
-	controller: Player
-	damageProof: boolean
-	derailable: boolean
-	derailed: boolean
-	direction: boolean
-	engineState: boolean
-	handling: { [string]: any }
-	idleRespawnDelay: number
-	landingGearDown: boolean
-	locked: boolean
-	maxPassengers: number
-	name: string
-	occupants: { [number]: Player }
-	onGround: boolean
-	overrideLights: number
-	paintjob: number
-	plateText: string
-	respawnDelay: number
-	respawnPosition: Vector3
-	respawnRotation: Vector3
-	sirenParams: { [any]: any }
-	sirens: { [any]: any }
-	sirensOn: boolean
-	taxiLightOn: boolean
-	towedByVehicle: Vehicle
-	towingVehicle: Vehicle
-	trainPosition: number
-	trainSpeed: number
-	turnVelocity: Vector3
-	turretPosition: Vector2
-	upgrades: { [number]: number }
-	vehicleType: string
+    blown: boolean
+    compatibleUpgrades: { [number]: any }
+    controller: Player
+    damageProof: boolean
+    derailable: boolean
+    derailed: boolean
+    direction: boolean
+    engineState: boolean
+    handling: { [string]: any }
+    idleRespawnDelay: number
+    landingGearDown: boolean
+    locked: boolean
+    maxPassengers: number
+    name: string
+    occupants: { [number]: Player }
+    onGround: boolean
+    overrideLights: number
+    paintjob: number
+    plateText: string
+    respawnDelay: number
+    respawnPosition: Vector3
+    respawnRotation: Vector3
+    sirenParams: { [any]: any }
+    sirens: { [any]: any }
+    sirensOn: boolean
+    taxiLightOn: boolean
+    towedByVehicle: Vehicle
+    towingVehicle: Vehicle
+    trainPosition: number
+    trainSpeed: number
+    turnVelocity: Vector3
+    turretPosition: Vector2
+    upgrades: { [number]: number }
+    vehicleType: string
 
-	__call: (model: number, x: number, y: number, z: number, rx: number?, ry: number?, rz: number?, numberplate: string?, bDirection: boolean?, variant1: number?, variant2: number?) -> Vehicle
-	getAllOfType: (model: number) -> { [number]: Vehicle }
+    __call: (model: number, x: number, y: number, z: number, rx: number?, ry: number?, rz: number?, numberplate: string?, bDirection: boolean?, variant1: number?, variant2: number?) -> Vehicle
+    getAllOfType: (model: number) -> { [number]: Vehicle }
 
-	function addSirens(self, sirenCount: number, sirenType: number, flag360: boolean?, checkLosFlag: boolean?, useRandomiser: boolean?, silentFlag: boolean?): boolean
-	function addUpgrade(self, upgrade: string | number): boolean
-	function attachTrailer(self, trailer: Vehicle): boolean
-	function blow(self, explode: boolean): boolean
-	function detachTrailer(self, trailer: Vehicle?): boolean
-	function fix(self): boolean
-	function getDirection(self): boolean
-	function getTrainPosition(self): number
-	function getColor(self, is_rgb: boolean): ...number
-	function getCompatibleUpgrades(self, slot: number?): { [number]: any }
-	function getController(self): Player | boolean
-	function getDoorOpenRatio(self, door: number): number
-	function getDoorState(self, door: number): number
-	function getEngineState(self): boolean
-	function getHandling(self): { [any]: any }
-	function getHeadLightColor(self): (number, number, number)
-	function getLangingGearDown(self): boolean
-	function getLightState(self, light: number): number
-	function getMaxPassengers(self): number
-	function getModelFromName(self, name: string): number
-	function getName(self): string
-	function getNameFromModel(self, model: number): string
-	function getOccupant(self, seat: number?): Player | boolean
-	function getOccupants(self): { [number]: Player }
-	function getOverrideLights(self): number
-	function getPaintjob(self): number
-	function getPanelState(self, panel: number): number
-	function getPlateText(self): string
-	function getRespawnPosition(self): (number, number, number)
-	function getRespawnRotation(self): (number, number, number)
-	function getSirenParams(self): { [any]: any }
-	function getSirens(self): { [any]: any }
-	function areSirensOn(self): boolean
-	function getTowedByVehicle(self): Vehicle
-	function getTowingVehicle(self): Vehicle
-	function getTurnVelocity(self): (number, number, number)
-	function getTurretPosition(self): (number, number)
-	function getVehicleType(self): string
-	function getUpgradeOnSlot(self, slot: number): number
-	function getUpgrades(self): { [number]: number }
-	function getVariant(self): (number, number)
-	function getWheelStates(self): (number, number, number, number)
-	function isDerailable(self): boolean
-	function isDerailed(self): boolean
-	function isBlown(self): boolean
-	function isDamageProof(self): boolean
-	function isLocked(self): boolean
-	function isOnGround(self): boolean
-	function isTaxiLightOn(self): boolean
-	function respawn(self): boolean
-	function setDerailable(self, derailable: boolean): boolean
-	function setDerailed(self, derailed: boolean): boolean
-	function setDirection(self, clockwise: boolean): boolean
-	function setTrainPosition(self, position: number): boolean
-	function setSpeed(self, speed: number): boolean
-	function setColor(self, id1: number, id2: number, id3: number, id4: number): boolean
-	function setColor(self, r1: number, g1: number, b1: number, r2: number?, g2: number?, b2: number?, r3: number?, g3: number?, b3: number?, r4: number?, g4: number?, b4: number?): boolean
-	function setDamageProof(self, damageProof: number): boolean
-	function setDoorOpenRatio(self, door: number, ratio: number, time: number?): boolean
-	function setDoorState(self, door: number, state: number): boolean
-	function setDoorsUndamageable(self, state: boolean): boolean
-	function setEngineState(self, engineState: boolean): boolean
-	function setFuelTankExplodable(self, explodable: boolean): boolean
-	function setHeadLightColor(self, red: number, green: number, blue: number): boolean
-	function setIdleRespawnDelay(self, timeDelay: number): boolean
-	function setLightState(self, light: number, state: number): boolean
-	function setLocked(self, locked: boolean): boolean
-	function setOverrideLights(self, value: number)
-	function setPanelState(self, panelID: number, state: number): boolean
-	function setPlateText(self, numberplate: string): boolean
-	function setRespawnDelay(self, timeDelay: number): boolean
-	function setRespawnPosition(self, x: number, y: number, z: number, rx: number?, ry: number?, rz: number?): boolean
-	function setRespawnRotation(self, rx: number, ry: number, rz: number): boolean
-	function setSirens(self, sirenPoint: number, posX: number, posY: number, posZ: number, red: number, green: number, blue: number, alpha: number?, minAlpha: number?): boolean
-	function setSirensOn(self, sirensOn: number): boolean
-	function setTaxiLightOn(self, LightState: number): boolean
-	function setTurnVelocity(self, rx: number, ry: number, rz: number): boolean
-	function setTurretPosition(self, positionX: number, positionY: number): boolean
-	function setVariant(self, variant1: number?, variant2: number?): boolean
-	function setWheelStates(self, frontLeft: number, rearLeft: number?, frontRight: number?, rearRight: number?): boolean
-	function spawn(self, x: number, y: number, z: number, rx: number?, ry: number?, rz: number?): boolean
-	function toggleRespawn(self, respawn: boolean): boolean
+    function addSirens(self, sirenCount: number, sirenType: number, flag360: boolean?, checkLosFlag: boolean?, useRandomiser: boolean?, silentFlag: boolean?): boolean
+    function addUpgrade(self, upgrade: string | number): boolean
+    function attachTrailer(self, trailer: Vehicle): boolean
+    function blow(self, explode: boolean): boolean
+    function detachTrailer(self, trailer: Vehicle?): boolean
+    function fix(self): boolean
+    function getDirection(self): boolean
+    function getTrainPosition(self): number
+    function getColor(self, is_rgb: boolean): ...number
+    function getCompatibleUpgrades(self, slot: number?): { [number]: any }
+    function getController(self): Player | boolean
+    function getDoorOpenRatio(self, door: number): number
+    function getDoorState(self, door: number): number
+    function getEngineState(self): boolean
+    function getHandling(self): { [any]: any }
+    function getHeadLightColor(self): (number, number, number)
+    function getLangingGearDown(self): boolean
+    function getLightState(self, light: number): number
+    function getMaxPassengers(self): number
+    function getModelFromName(self, name: string): number
+    function getName(self): string
+    function getNameFromModel(self, model: number): string
+    function getOccupant(self, seat: number?): Player | boolean
+    function getOccupants(self): { [number]: Player }
+    function getOverrideLights(self): number
+    function getPaintjob(self): number
+    function getPanelState(self, panel: number): number
+    function getPlateText(self): string
+    function getRespawnPosition(self): (number, number, number)
+    function getRespawnRotation(self): (number, number, number)
+    function getSirenParams(self): { [any]: any }
+    function getSirens(self): { [any]: any }
+    function areSirensOn(self): boolean
+    function getTowedByVehicle(self): Vehicle
+    function getTowingVehicle(self): Vehicle
+    function getTurnVelocity(self): (number, number, number)
+    function getTurretPosition(self): (number, number)
+    function getVehicleType(self): string
+    function getUpgradeOnSlot(self, slot: number): number
+    function getUpgrades(self): { [number]: number }
+    function getVariant(self): (number, number)
+    function getWheelStates(self): (number, number, number, number)
+    function isDerailable(self): boolean
+    function isDerailed(self): boolean
+    function isBlown(self): boolean
+    function isDamageProof(self): boolean
+    function isLocked(self): boolean
+    function isOnGround(self): boolean
+    function isTaxiLightOn(self): boolean
+    function respawn(self): boolean
+    function setDerailable(self, derailable: boolean): boolean
+    function setDerailed(self, derailed: boolean): boolean
+    function setDirection(self, clockwise: boolean): boolean
+    function setTrainPosition(self, position: number): boolean
+    function setSpeed(self, speed: number): boolean
+    function setColor(self, id1: number, id2: number, id3: number, id4: number): boolean
+    function setColor(self, r1: number, g1: number, b1: number, r2: number?, g2: number?, b2: number?, r3: number?, g3: number?, b3: number?, r4: number?, g4: number?, b4: number?): boolean
+    function setDamageProof(self, damageProof: number): boolean
+    function setDoorOpenRatio(self, door: number, ratio: number, time: number?): boolean
+    function setDoorState(self, door: number, state: number): boolean
+    function setDoorsUndamageable(self, state: boolean): boolean
+    function setEngineState(self, engineState: boolean): boolean
+    function setFuelTankExplodable(self, explodable: boolean): boolean
+    function setHeadLightColor(self, red: number, green: number, blue: number): boolean
+    function setIdleRespawnDelay(self, timeDelay: number): boolean
+    function setLightState(self, light: number, state: number): boolean
+    function setLocked(self, locked: boolean): boolean
+    function setOverrideLights(self, value: number)
+    function setPanelState(self, panelID: number, state: number): boolean
+    function setPlateText(self, numberplate: string): boolean
+    function setRespawnDelay(self, timeDelay: number): boolean
+    function setRespawnPosition(self, x: number, y: number, z: number, rx: number?, ry: number?, rz: number?): boolean
+    function setRespawnRotation(self, rx: number, ry: number, rz: number): boolean
+    function setSirens(self, sirenPoint: number, posX: number, posY: number, posZ: number, red: number, green: number, blue: number, alpha: number?, minAlpha: number?): boolean
+    function setSirensOn(self, sirensOn: number): boolean
+    function setTaxiLightOn(self, LightState: number): boolean
+    function setTurnVelocity(self, rx: number, ry: number, rz: number): boolean
+    function setTurretPosition(self, positionX: number, positionY: number): boolean
+    function setVariant(self, variant1: number?, variant2: number?): boolean
+    function setWheelStates(self, frontLeft: number, rearLeft: number?, frontRight: number?, rearRight: number?): boolean
+    function spawn(self, x: number, y: number, z: number, rx: number?, ry: number?, rz: number?): boolean
+    function toggleRespawn(self, respawn: boolean): boolean
 end
 declare Vehicle: Vehicle
 
 declare class Ped extends Element
-	ammoInClip: number
-	armor: number
-	contactElement: Element
-	fightingStyle: number
-	gravity: number
-	vehicle: Vehicle
-	vehicleSeat: number
-	walkingStyle: number
-	weaponSlot: number
-	choking: boolean
-	dead: boolean
-	doingGangDriveby: boolean
-	ducked: boolean
-	inVehicle: boolean
-	onFire: boolean
-	onGround: boolean
-	jetpack: boolean
+    ammoInClip: number
+    armor: number
+    contactElement: Element
+    fightingStyle: number
+    gravity: number
+    vehicle: Vehicle
+    vehicleSeat: number
+    walkingStyle: number
+    weaponSlot: number
+    choking: boolean
+    dead: boolean
+    doingGangDriveby: boolean
+    ducked: boolean
+    inVehicle: boolean
+    onFire: boolean
+    onGround: boolean
+    jetpack: boolean
 
-	function addClothes(self, clothesTexture: string, clothesModel: string, clothesType: number): boolean
-	function getAmmoInClip(self, weaponSlot: number?): number
-	function getArmor(self): number
-	function getClothes(self, clothesType: number): (string, string)
-	function getContactElement(self): Element
-	function getFightingStyle(self): number
-	function getGravity(self): number
-	function getOccupiedVehicle(self): Vehicle
-	function getOccupiedVehicleSeat(self): number
-	function getStat(self, stat: number): number
-	function getTarget(self): Element
-	function getTotalAmmo(self, weaponSlot: number?): number
-	function getWalkingStyle(self): number
-	function getWeapon(self, weaponSlot: number?): number
-	function getWeaponSlot(self): number
-	function isChoking(self): boolean
-	function isDead(self): boolean
-	function isDoingGangDriveby(self): boolean
-	function isDucked(self): boolean
-	function isInVehicle(self): boolean
-	function isOnFire(self): boolean
-	function isOnGround(self): boolean
-	function isWearingJetpack(self): boolean
-	function kill(self, theKiller: Ped?, weapon: number?, bodyPart: number?, stealth: boolean?): boolean
-	function reloadWeapon(self): boolean
-	function removeClothes(self, clothesType: number, clothesTexture: string?, clothesModel: string?): boolean
-	function removeFromVehicle(self): boolean
-	function setAnimation(self, block: string?, anim: string?, time: number?, loop: boolean?, updatePosition: boolean?, interruptable: boolean?, freezeLastFrame: boolean?, blendTime: number?, retainPedState: boolean?): boolean
-	function setAnimationProgress(self, anim: string?, progress: number?): boolean
-	function setAnimationSpeed(self, anim: string?, speed: number?): boolean
-	function setArmor(self, armor: number): boolean
-	function setChoking(self, choking: boolean): boolean
-	function setGravity(self, gravity: number): boolean
-	function setHeadless(self, headState: boolean): boolean
-	function setOnFire(self, isOnFire: boolean): boolean
-	function setWalkingStyle(self, style: number): boolean
-	function setWeaponSlot(self, weaponSlot: number): boolean
-	function setWearingJetpack(self, state: boolean): boolean
-	function warpIntoVehicle(self, vehicle: Vehicle, seat: number?): boolean
+    function addClothes(self, clothesTexture: string, clothesModel: string, clothesType: number): boolean
+    function getAmmoInClip(self, weaponSlot: number?): number
+    function getArmor(self): number
+    function getClothes(self, clothesType: number): (string, string)
+    function getContactElement(self): Element
+    function getFightingStyle(self): number
+    function getGravity(self): number
+    function getOccupiedVehicle(self): Vehicle
+    function getOccupiedVehicleSeat(self): number
+    function getStat(self, stat: number): number
+    function getTarget(self): Element
+    function getTotalAmmo(self, weaponSlot: number?): number
+    function getWalkingStyle(self): number
+    function getWeapon(self, weaponSlot: number?): number
+    function getWeaponSlot(self): number
+    function isChoking(self): boolean
+    function isDead(self): boolean
+    function isDoingGangDriveby(self): boolean
+    function isDucked(self): boolean
+    function isInVehicle(self): boolean
+    function isOnFire(self): boolean
+    function isOnGround(self): boolean
+    function isWearingJetpack(self): boolean
+    function kill(self, theKiller: Ped?, weapon: number?, bodyPart: number?, stealth: boolean?): boolean
+    function reloadWeapon(self): boolean
+    function removeClothes(self, clothesType: number, clothesTexture: string?, clothesModel: string?): boolean
+    function removeFromVehicle(self): boolean
+    function setAnimation(self, block: string?, anim: string?, time: number?, loop: boolean?, updatePosition: boolean?, interruptable: boolean?, freezeLastFrame: boolean?, blendTime: number?, retainPedState: boolean?): boolean
+    function setAnimationProgress(self, anim: string?, progress: number?): boolean
+    function setAnimationSpeed(self, anim: string?, speed: number?): boolean
+    function setArmor(self, armor: number): boolean
+    function setChoking(self, choking: boolean): boolean
+    function setGravity(self, gravity: number): boolean
+    function setHeadless(self, headState: boolean): boolean
+    function setOnFire(self, isOnFire: boolean): boolean
+    function setWalkingStyle(self, style: number): boolean
+    function setWeaponSlot(self, weaponSlot: number): boolean
+    function setWearingJetpack(self, state: boolean): boolean
+    function warpIntoVehicle(self, vehicle: Vehicle, seat: number?): boolean
 end
 
 declare class Object extends Element
@@ -495,168 +502,174 @@ declare class Pickup extends Element
 end
 
 declare class Marker extends Element
-	icon: string
-	size: number
-	target: Vector3
-	markerType: string
+    icon: string
+    size: number
+    target: Vector3
+    markerType: string
 
-	function getColor(self): (number, number, number, number)
-	function getIcon(self): string
-	function getSize(self): number
-	function getTarget(self): (number, number, number)
-	function getMarkerType(self): string
-	function setColor(self, r: number, g: number, b: number, a: number): boolean
-	function setIcon(self, icon: string): boolean
-	function setSize(self, size: number): boolean
-	function setTarget(self, x: number, y: number, z: number): boolean
-	function setMarkerType(self, markerType: string): boolean
+    function getColor(self): (number, number, number, number)
+    function getIcon(self): string
+    function getSize(self): number
+    function getTarget(self): (number, number, number)
+    function getMarkerType(self): string
+    function setColor(self, r: number, g: number, b: number, a: number): boolean
+    function setIcon(self, icon: string): boolean
+    function setSize(self, size: number): boolean
+    function setTarget(self, x: number, y: number, z: number): boolean
+    function setMarkerType(self, markerType: string): boolean
 end
 
 declare class Blip extends Element
-	icon: number
-	ordering: number
-	size: number
-	visibleDistance: number
+    icon: number
+    ordering: number
+    size: number
+    visibleDistance: number
 
-	__call: (x: number, y: number, z: number, icon: number?, size: number?, r: number?, g: number?, b: number?, ordering: number?, visibleDistance: number?) -> Blip
-	__call: (x: number, y: number, z: number, icon: number?, size: number?, r: number?, g: number?, b: number?, ordering: number?, visibleDistance: number?, visibleTo: Element?) -> Blip
+    __call: (x: number, y: number, z: number, icon: number?, size: number?, r: number?, g: number?, b: number?, ordering: number?, visibleDistance: number?) -> Blip
+    __call: (x: number, y: number, z: number, icon: number?, size: number?, r: number?, g: number?, b: number?, ordering: number?, visibleDistance: number?, visibleTo: Element?) -> Blip
 
-	createAttachedTo: (elementToAttachTo: Element, icon: number?, size: number?, r: number?, g: number?, b: number?, ordering: number?, visibleDistance: number?) -> Blip
-	createAttachedTo: (elementToAttachTo: Element, icon: number?, size: number?, r: number?, g: number?, b: number?, ordering: number?, visibleDistance: number?, visibleTo: Element?) -> Blip
+    createAttachedTo: (elementToAttachTo: Element, icon: number?, size: number?, r: number?, g: number?, b: number?, ordering: number?, visibleDistance: number?) -> Blip
+    createAttachedTo: (elementToAttachTo: Element, icon: number?, size: number?, r: number?, g: number?, b: number?, ordering: number?, visibleDistance: number?, visibleTo: Element?) -> Blip
 
-	function getColor(self): (number, number, number, number)
-	function getIcon(self): number
-	function getOrdering(self): number
-	function getSize(self): number
-	function getVisibleDistance(self): number
-	function setColor(self, r: number, g: number, b: number, a: number): boolean
-	function setIcon(self, icon: number): boolean
-	function setOrdering(self, ordering: number): boolean
-	function setSize(self, iconSize: number): boolean
-	function etVisibleDistance(self, theDistance: number): boolean
+    function getColor(self): (number, number, number, number)
+    function getIcon(self): number
+    function getOrdering(self): number
+    function getSize(self): number
+    function getVisibleDistance(self): number
+    function setColor(self, r: number, g: number, b: number, a: number): boolean
+    function setIcon(self, icon: number): boolean
+    function setOrdering(self, ordering: number): boolean
+    function setSize(self, iconSize: number): boolean
+    function etVisibleDistance(self, theDistance: number): boolean
 end
 declare Blip: Blip
 
 declare class RadarArea extends Element
-	flashing: number
+    flashing: number
 
-	__call: (x: number, y: number, width: number, height: number, r: number?, g: number?, b: number?, a: number?, visibleTo: Element?) -> RadarArea
+    __call: (x: number, y: number, width: number, height: number, r: number?, g: number?, b: number?, a: number?, visibleTo: Element?) -> RadarArea
 
-	function getColor(self): (number, number, number, number)
-	function getSize(self): (number, number)
-	function isInside(self, x: number, y: number): boolean
-	function isFlashing(self): boolean
-	function setColor(self, r: number, g: number, b: number, a: number): boolean
-	function setFlashing(self, flash: boolean): boolean
-	function setSize(self, x: number, y: number)
+    function getColor(self): (number, number, number, number)
+    function getSize(self): (number, number)
+    function isInside(self, x: number, y: number): boolean
+    function isFlashing(self): boolean
+    function setColor(self, r: number, g: number, b: number, a: number): boolean
+    function setFlashing(self, flash: boolean): boolean
+    function setSize(self, x: number, y: number)
 end
 declare RadarArea: RadarArea
 
 declare class Projectile extends Element
-	counter: number
-	creator: Element
-	force: number
-	target: Element
-	type: number
+    counter: number
+    creator: Element
+    force: number
+    target: Element
+    type: number
 
-	__call: (creator: Element, weaponType: number, x: number?, y: number?, z: number?, force: number?, target: Element?, rotX: number?, rotY: number?, rotZ: number?, velX: number?, velY: number?, velZ: number?, model: number?) -> Projectile
+    __call: (creator: Element, weaponType: number, x: number?, y: number?, z: number?, force: number?, target: Element?, rotX: number?, rotY: number?, rotZ: number?, velX: number?, velY: number?, velZ: number?, model: number?) -> Projectile
 
-	function getCounter(self): number
-	function getCreator(self): Element
-	function getForce(self): number
-	function getTarget(self): Element
-	function getType(self): number
-	function setCounter(self, timeToDetonate: number)
+    function getCounter(self): number
+    function getCreator(self): Element
+    function getForce(self): number
+    function getTarget(self): Element
+    function getType(self): number
+    function setCounter(self, timeToDetonate: number)
 end
 declare Projectile: Projectile
 
-declare class Button extends Element
+declare class GUIElement extends Element
 end
 
-declare class Checkbox extends Element
+declare class Button extends GUIElement
 end
 
-declare class Combobox extends Element
+declare class Checkbox extends GUIElement
 end
 
-declare class Edit extends Element
+declare class Combobox extends GUIElement
 end
 
-declare class Gridlist extends Element
+declare class Edit extends GUIElement
 end
 
-declare class Memo extends Element
+declare class Gridlist extends GUIElement
 end
 
-declare class ProgressBar extends Element
+declare class Memo extends GUIElement
 end
 
-declare class RadioButton extends Element
+declare class ProgressBar extends GUIElement
 end
 
-declare class Scrollbar extends Element
+declare class RadioButton extends GUIElement
 end
 
-declare class Scrollpane extends Element
+declare class Scrollbar extends GUIElement
 end
 
-declare class Image extends Element
+declare class Scrollpane extends GUIElement
 end
 
-declare class TabPanel extends Element
+declare class Image extends GUIElement
 end
 
-declare class Tab extends Element
+declare class TabPanel extends GUIElement
 end
 
-declare class Label extends Element
+declare class Tab extends GUIElement
 end
 
-declare class Window extends Element
+declare class Label extends GUIElement
+end
+
+declare class Window extends GUIElement
 end
 
 declare class TXD extends Element
 end
 
-declare class EngineTXD extends Element
-	__call: (txd_file: string, filteringEnabled: boolean? ) -> TXD
-	__call: (raw_data: string, filteringEnabled: boolean? ) -> TXD
+declare class IFP extends Element
+end
 
-	function import(self, model_id: number): boolean
+declare class EngineTXD extends Element
+    __call: (txd_file: string, filteringEnabled: boolean? ) -> TXD
+    __call: (raw_data: string, filteringEnabled: boolean? ) -> TXD
+
+    function import(self, model_id: number): boolean
 end
 declare EngineTXD: EngineTXD
 
 declare class Engine extends Element
-	getModelIDFromName: (modelName: string) -> number
-	getModelLODDistance: (modelID: number) -> number
-	getModelNameFromID: (modelID: number) -> string
-	getModelTextureNames: (modelNameOrID: string) -> { [number]: string }
-	getVisibleTextureNames: (nameFilter: string?, modelId: string?) -> { [number]: string }
-	resetModelLODDistance: (modelID: number) -> boolean
-	restoreCOL: (modelID: number) -> boolean
-	restoreModel: (modelID: number) -> boolean
-	setAsynchronousLoading: (enable: boolean, force: boolean) -> boolean
-	setModelLODDistance: (modelID: number, distance: number) -> boolean
+    getModelIDFromName: (modelName: string) -> number
+    getModelLODDistance: (modelID: number) -> number
+    getModelNameFromID: (modelID: number) -> string
+    getModelTextureNames: (modelNameOrID: string) -> { [number]: string }
+    getVisibleTextureNames: (nameFilter: string?, modelId: string?) -> { [number]: string }
+    resetModelLODDistance: (modelID: number) -> boolean
+    restoreCOL: (modelID: number) -> boolean
+    restoreModel: (modelID: number) -> boolean
+    setAsynchronousLoading: (enable: boolean, force: boolean) -> boolean
+    setModelLODDistance: (modelID: number, distance: number) -> boolean
 end
 declare Engine: Engine
 
 declare class DFF extends Element
-	function replace(self, modelID: number, alphaTransparency: boolean?): boolean
+    function replace(self, modelID: number, alphaTransparency: boolean?): boolean
 end
 
 declare class EngineDFF extends Element
-	__call: (dff_file: string) -> DFF
-	__call: (raw_data: string) -> DFF
+    __call: (dff_file: string) -> DFF
+    __call: (raw_data: string) -> DFF
 end
 declare EngineDFF: EngineDFF
 
 declare class COL extends Element
-	function replace(self, modelID: number): boolean
+    function replace(self, modelID: number): boolean
 end
 
 declare class EngineCOL extends Element
-	__call: (col_file: string) -> COL
-	__call: (raw_data: string) -> COL
+    __call: (col_file: string) -> COL
+    __call: (raw_data: string) -> COL
 end
 declare EngineCOL: EngineCOL
 
@@ -670,14 +683,15 @@ declare class Texture extends Material
 end
 
 declare class Shader extends Material
-	function applyToWorldTexture(self, shader: Element, textureName: string, targetElement: Element?, appendLayers: boolean?): boolean
-	function removeFromWorldTexture(self, textureName: string, targetElement: Element?): boolean
+    function applyToWorldTexture(self, shader: Element, textureName: string, targetElement: Element?, appendLayers: boolean?): boolean
+    function removeFromWorldTexture(self, textureName: string, targetElement: Element?): boolean
 end
 
 declare class DXFont extends Element
 end
 
 declare class GUIFont extends Element
+    __call: (filepath: string, size: number?) -> Element
 end
 
 declare class Weapon extends Element
@@ -754,10 +768,12 @@ declare addPedClothes: (thePed: Ped, clothesTexture: string, clothesModel: strin
 declare addResourceConfig: (filePath: string, filetype: string?) -> XMLNode
 declare addResourceMap: (filePath: string, dimension: number?) -> XMLNode
 declare addVehicleSirens: (theVehicle: Vehicle, sirenCount: number, sirenType: number, flag360: boolean?, checkLosFlag: boolean?, useRandomiser: boolean?, silentFlag: boolean?) -> boolean
+declare addVehicleUpgrade: (vehicle: Vehicle, upgrade: string|number) -> boolean
 declare areTrafficLightsLocked: () -> boolean
 declare areVehicleLightsOn: (theVehicle: Vehicle) -> boolean
 declare attachElements: (theElement: Element, theAttachToElement: Element, xPosOffset: number?, yPosOffset: number?, zPosOffset: number?, xRotOffset: number?, yRotOffset: number?, zRotOffset: number?) -> boolean
 declare attachTrailerToVehicle: (theVehicle: Vehicle, theTrailer: Vehicle) -> boolean
+declare banPlayer: (player: Player, ip: boolean?, username: boolean?, serial: boolean?, responsiblePlayer: Player?|string?, reason: string?, seconds: number?) -> Ban
 declare base64Decode: (data: string) -> string
 declare base64Encode: (data: string) -> string
 declare bindKey: (thePlayer: Player, key: string, keyState: string, handlerFunction: any, arguments: any?, ...any?) -> boolean
@@ -768,17 +784,20 @@ declare bitLRotate: (value: number, n: number) -> number
 declare bitLShift: (value: number, n: number) -> number
 declare bitNot: (var: number) -> number
 declare bitOr: (var1: number, var2: number, ...any) -> number
+declare bitReplace: (var: number, replaceValue: number, field: number, width: number?) -> number
 declare bitRRotate: (value: number, n: number) -> number
 declare bitRShift: (value: number, n: number) -> number
-declare bitReplace: (var: number, replaceValue: number, field: number, width: number?) -> number
 declare bitTest: (var1: number, var2: number, ...any) -> boolean
 declare bitXor: (var1: number, var2: number, ...any) -> number
+declare blowVehicle: (vehicleToBlow: Vehicle, explode: boolean? ) -> boolean
 declare breakObject: (theObject: Object) -> boolean
+declare call: (resource: Resource, function_name: string, ...any?) -> any
+declare callRemote: (host: string, queueName: string?, connectionAttempts: number?, connectTimeout: number?, resourceName: string?, functionName: string?, callbackFunction: any?, ...any?) -> boolean
 declare canBrowserNavigateBack: (webBrowser: Browser) -> boolean
 declare canBrowserNavigateForward: (webBrowser: Browser) -> boolean
-declare canPedBeKnockedOffBike: (thePed: Ped) -> boolean
 declare cancelEvent: (cancel: boolean?, reason: string?) -> boolean
 declare cancelLatentEvent: (thePlayer: Player, handle: number) -> boolean
+declare canPedBeKnockedOffBike: (thePed: Ped) -> boolean
 declare clearChatBox: () -> boolean
 declare clearDebugBox: () -> boolean
 declare clearElementVisibleTo: (theElement: Element) -> boolean
@@ -803,18 +822,23 @@ declare createLight: (lightType: number, posX: number, posY: number, posZ: numbe
 declare createMarker: (x: number, y: number, z: number, theType: string?, size: number?, r: number?, g: number?, b: number?, a: number?, visibleTo: Element?) -> Marker
 declare createObject: (modelId: number, x: number, y: number, z: number, rx: number?, ry: number?, rz: number?, isLowLOD: boolean?) -> Object
 declare createPed: (modelid: number, x: number, y: number, z: number, rot: number?, synced: boolean?) -> Ped
+declare createPickup: (x: number, y: number, z: number, theType: number, amount_or_weapon_or_model: number, respawnTime: number?, ammo: number?) -> Pickup
 declare createProjectile: (creator: Element, weaponType: number, posX: number?, posY: number?, posZ: number?, force: number?, target: Element?, rotX: number?, rotY: number?, rotZ: number?, velX: number?, velY: number?, velZ: number?, model: number?) -> Projectile
 declare createRadarArea: (startPosX: number, startPosY: number, sizeX: number, sizeY: number, r: number?, g: number?, b: number?, a: number?, visibleTo: Element?) -> RadarArea
 declare createResource: (resourceName: string, organizationalDir: string?) -> Resource
-declare createSWATRope: (fx: number, fy: number, fZ: number, duration: number) -> boolean
 declare createSearchLight: (startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, startRadius: number, endRadius: number, renderSpot: boolean?) -> Searchlight
+declare createSWATRope: (fx: number, fy: number, fZ: number, duration: number) -> boolean
 declare createTeam: (teamName: string, colorR: number?, colorG: number?, colorB: number?) -> Team
 declare createTrayNotification: (notificationText: string, iconType: string?, useSound: boolean?) -> boolean
 declare createVehicle: (model: number, x: number, y: number, z: number, rx: number?, ry: number?, rz: number?, numberplate: string?, bDirection: boolean?, variant1: number?, variant2: number?) -> Vehicle
+declare createWater: (x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, x3: number, y3: number, z3: number, x4: number?, y4: number?, z4: number?, shallow: boolean?) -> Water
 declare createWeapon: (theType: string, x: number, y: number, z: number) -> Weapon
 declare dbConnect: (databaseType: string, host: string, username: string?, password: string?, options: string?) -> Element
+declare dbExec: (databaseConnection: Element, query: string, ...any?) -> boolean
 declare dbFree: (queryHandle: any) -> boolean
 declare dbPoll: (queryHandle: any, timeout: number, multipleResults: boolean?) -> any
+declare dbPrepareString: (databaseConnection: Element, query: string, ...any?) -> string
+declare dbQuery: (callbackFunction: any, callbackArguments: { [any]: any }?, databaseConnection: Element, query: string, ...any?) -> any
 declare debugSleep: (sleep: number) -> boolean
 declare decodeString: (algorithm: string, input: string, options: any, callback: any?) -> string
 declare deleteResource: (resourceName: string) -> boolean
@@ -826,24 +850,39 @@ declare detonateSatchels: () -> boolean
 declare doesPedHaveJetPack: (thePed: Ped) -> boolean
 declare downloadFile: (fileName: string) -> boolean
 declare dxConvertPixels: (pixels: string, newFormat: string, quality: number?) -> string
+declare dxCreateFont: (filepath: string, size: number?, bold: boolean?, quality: string?) -> Element
 declare dxCreateRenderTarget: (width: number, height: number, withAlpha: boolean?) -> Element
 declare dxCreateScreenSource: (width: number, height: number) -> Element
+declare dxCreateShader: (filepath: string, priority: number?, maxDistance: number?, layered: boolean?, elementTypes: string?) -> (Element, string)
+declare dxCreateShader: (raw_data: string, priority: number?, maxDistance: number?, layered: boolean?, elementTypes: string?) -> (Element, string)
+declare dxCreateTexture: (filepath: string, textureFormat: string?, mipmaps: boolean?, textureEdge: string?) -> Element
+declare dxCreateTexture: (pixels: string, textureFormat: string?, mipmaps: boolean?, textureEdge: string?) -> Element
 declare dxDrawCircle: (posX: number, posY: number, radius: number, startAngle: number?, stopAngle: number?, theColor: number?, theCenterColor: number?, segments: number?, ratio: number?, postGUI: boolean?) -> boolean
+declare dxDrawImage: (x: number, y: number, width: number, height: number, image: any, rotation: number?, rotationCenterOffsetX: number?, rotationCenterOffsetY: number?, color: number?, postGUI: boolean?) -> boolean
 declare dxDrawImageSection: (posX: number, posY: number, width: number, height: number, u: number, v: number, usize: number, vsize: number, image: any, rotation: number?, rotationCenterOffsetX: number?, rotationCenterOffsetY: number?, color: number?, postGUI: boolean?) -> boolean
 declare dxDrawLine: (startX: number, startY: number, endX: number, endY: number, color: number, width: number?, postGUI: boolean?) -> boolean
 declare dxDrawLine3D: (startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, color: number?, width: number?, postGUI: boolean?) -> boolean
+declare dxDrawMaterialLine3D: (startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, flipUV: boolean?, material: Element, width: number, color: number?, postGUI: boolean?, faceTowardX: number?, faceTowardY: number?, faceTowardZ: number?) -> boolean
 declare dxDrawMaterialPrimitive: (pType: any, material: any, postGUI: boolean, vertice1: any, vertice2: any?, ...any?) -> boolean
 declare dxDrawMaterialPrimitive3D: (pType: any, material: any, postGUI: boolean, vertice1: any, vertice2: any?, ...any?) -> boolean
+declare dxDrawMaterialSectionLine3D: (startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, u: number, v: number, usize: number, vsize: number, flipUV: boolean?, material: Element, width: number, color: number?, postGUI: boolean?, faceTowardX: number?, faceTowardY: number?, faceTowardZ: number?) -> boolean
 declare dxDrawPrimitive: (pType: string, postGUI: boolean, vertice1: any, vertice2: any?, ...any?) -> boolean
 declare dxDrawPrimitive3D: (primitiveType: string, postGUI: boolean, vertex1: any, vertex2: any, vertex3: any, vertex4: any?, ...any?) -> boolean
 declare dxDrawRectangle: (startX: number, startY: number, width: number, height: number, color: number?, postGUI: boolean?, subPixelPositioning: boolean?) -> boolean
+declare dxDrawText: (text: string, leftX: number, topY: number, rightX: number?, bottomY: number?, color: number?, scaleXY: number?, scaleY: number?, font: any?, alignX: string?, alignY: string?, clip: boolean?, wordBreak: boolean?, postGUI: boolean?, colorCoded: boolean?, subPixelPositioning: boolean?, fRotation: number?, fRotationCenterX: number?, fRotationCenterY: number?, fLineSpacing: number?) -> boolean
 declare dxDrawWiredSphere: (x: number, y: number, z: number, radius: number, theColor: number, fLineWidth: number, iterations: number) -> boolean
 declare dxGetBlendMode: () -> string
+declare dxGetFontHeight: (scale: number?, font: any?) -> number
+declare dxGetMaterialSize: (material: Element) -> (number, number, number?)
 declare dxGetPixelColor: (pixels: string, x: number, y: number) -> (number, number, number, number)
 declare dxGetPixelsFormat: (pixels: string) -> string
 declare dxGetPixelsSize: (pixels: string) -> (number, number)
 declare dxGetStatus: () -> any
+declare dxGetTextSize: (text: string, width: number?, scaleXY: number?, scaleY: number?, font: any?, wordBreak: boolean?, colorCoded: boolean?) -> (number, number)
+declare dxGetTexturePixels: (surfaceIndex: number?, texture: Element, x: number?, y: number?, width: number?, height: number?) -> string
+declare dxGetTextWidth: (text: string, scale: number?, font: any?, bColorCoded: boolean?) -> number
 declare dxIsAspectRatioAdjustmentEnabled: () -> (boolean, number)
+declare dxSetAspectRatioAdjustmentEnabled: (bEnabled: boolean, sourceRatio: number?) -> boolean
 declare dxSetBlendMode: (blendMode: string) -> boolean
 declare dxSetPixelColor: (pixels: string, x: number, y: number, r: number, g: number, b: number, a: number?) -> boolean
 declare dxSetRenderTarget: (renderTarget: Element?, clear: boolean?) -> boolean
@@ -852,6 +891,7 @@ declare dxSetShaderTransform: (theShader: Element, rotationX: number, rotationY:
 declare dxSetShaderValue: (theShader: Element, parameterName: string, value: any) -> boolean
 declare dxSetTestMode: (testMode: string) -> boolean
 declare dxSetTextureEdge: (theTexture: Texture, textureEdge: string, border_color: number?) -> boolean
+declare dxSetTexturePixels: (surfaceIndex: number?, texture: Element, pixels: string, x: number?, y: number?, width: number?, height: number?) -> boolean
 declare dxUpdateScreenSource: (screenSource: Element, resampleNow: boolean?) -> boolean
 declare encodeString: (algorithm: string, input: string, options: any, callback: any?) -> string
 declare engineApplyShaderToWorldTexture: (shader: Element, textureName: string, targetElement: Element?, appendLayers: boolean?) -> boolean
@@ -861,11 +901,21 @@ declare engineGetModelLODDistance: (model: number) -> number
 declare engineGetModelNameFromID: (modelID: number) -> string
 declare engineGetModelPhysicalPropertiesGroup: (modelID: number) -> number
 declare engineGetModelTextureNames: (modelId: string?) -> any
+declare engineGetModelTextures: ( modelID: number, textureNames: string | { [number]: string }) -> { [number]: any }
+declare engineGetModelTextures: ( modelName: string, textureNames: string | { [number]: string }) -> { [number]: any }
 declare engineGetModelVisibleTime: (modelId: number) -> (number, number)
 declare engineGetObjectGroupPhysicalProperty: (groupID: number, property: any) -> any
 declare engineGetSurfaceProperties: (surfaceID: number, property: string) -> any
 declare engineGetVisibleTextureNames: (nameFilter: string?, modelId: string?) -> any
 declare engineImportTXD: (texture: TXD, model_id: number) -> boolean
+declare engineLoadCOL: (col_file: string) -> ColShape
+declare engineLoadCOL: (raw_data: string) -> ColShape
+declare engineLoadDFF: (dff_file: string) -> DFF
+declare engineLoadDFF: (raw_data: string) -> DFF
+declare engineLoadIFP: (ifp_file: string, custom_block_name: string) -> IFP
+declare engineLoadIFP: (raw_data: string, custom_block_name: string) -> IFP
+declare engineLoadTXD: (raw_data: string, filteringEnabled: boolean?) -> TXD
+declare engineLoadTXD: (txd_file: string, filteringEnabled: boolean?) -> TXD
 declare engineRemoveShaderFromWorldTexture: (shader: Element, textureName: string, targetElement: Element?) -> boolean
 declare engineReplaceAnimation: (thePed: Ped, InternalBlockName: string, InternalAnimName: string, CustomBlockName: string, CustomAnimName: string) -> boolean
 declare engineReplaceCOL: (theCol: COL, modelID: number) -> boolean
@@ -889,7 +939,10 @@ declare engineStreamingFreeUpMemory: (bytes: number) -> boolean
 declare engineStreamingGetUsedMemory: () -> number
 declare executeBrowserJavascript: (webBrowser: Browser, jsCode: string) -> boolean
 declare executeCommandHandler: (commandName: string, thePlayer: Player, args: string?) -> boolean
+declare executeSQLQuery: (query: string, ...any?) -> { [any]: any }
+declare extinguishFire: (x: number?, y: number?, z: number?, radius: number?) -> boolean
 declare fadeCamera: (thePlayer: Player, fadeIn: boolean, timeToFade: number?, red: number?, green: number?, blue: number?) -> boolean
+declare fetchRemote: (URL: string, queueName: string?, connectionAttempts: number?, connectTimeout: number?, callbackFunction: any, postData: string?, postIsBinary: boolean?, ...any?) -> boolean
 declare fileClose: (theFile: any) -> boolean
 declare fileCopy: (filePath: string, copyToFilePath: string, overwrite: boolean?) -> boolean
 declare fileCreate: (filePath: string) -> any
@@ -933,11 +986,11 @@ declare getAccountID: (theAccount: Account) -> number
 declare getAccountIP: (theAccount: Account) -> string
 declare getAccountName: (theAccount: Account) -> string
 declare getAccountPlayer: (theAccount: Account) -> Player
-declare getAccountSerial: (theAccount: Account) -> string
 declare getAccounts: () -> any
 declare getAccountsByData: (dataName: string, value: string) -> any
 declare getAccountsByIP: (ip: string) -> any
 declare getAccountsBySerial: (serial: string) -> any
+declare getAccountSerial: (theAccount: Account) -> string
 declare getAircraftMaxHeight: () -> number
 declare getAircraftMaxVelocity: () -> number
 declare getAlivePlayers: () -> any
@@ -949,10 +1002,10 @@ declare getBanAdmin: (theBan: Ban) -> string
 declare getBanIP: (theBan: Ban) -> string
 declare getBanNick: (theBan: Ban) -> string
 declare getBanReason: (theBan: Ban) -> string
+declare getBans: () -> any
 declare getBanSerial: (theBan: Ban) -> string
 declare getBanTime: (theBan: Ban) -> number
 declare getBanUsername: (theBan: Ban) -> string
-declare getBans: () -> any
 declare getBirdsEnabled: () -> boolean
 declare getBlipColor: (theBlip: Blip) -> (number, number, number, number)
 declare getBlipIcon: (theBlip: Blip) -> number
@@ -969,8 +1022,8 @@ declare getCamera: () -> Element
 declare getCameraClip: () -> (boolean, boolean)
 declare getCameraFieldOfView: (cameraMode: string) -> number
 declare getCameraGoggleEffect: () -> string
-declare getCameraInterior: (thePlayer: Player) -> number
 declare getCameraInterior: () -> number
+declare getCameraInterior: (thePlayer: Player) -> number
 declare getCameraMatrix: (thePlayer: Player) -> (number, number, number, number, number, number, number, number)
 declare getCameraShakeLevel: () -> number
 declare getCameraTarget: (thePlayer: Player) -> Element
@@ -980,13 +1033,13 @@ declare getChatboxLayout: (CVar: string?) -> any
 declare getClothesByTypeIndex: (clothesType: number, clothesIndex: number) -> (string, string)
 declare getClothesTypeName: (clothesType: number) -> string
 declare getCloudsEnabled: () -> boolean
+declare getColorFromString: (theColor: string) -> (number, number, number, number)
 declare getColPolygonHeight: (shape: ColShape) -> (number, number)
 declare getColPolygonPointPosition: (shape: ColShape, index: number) -> (number, number)
 declare getColPolygonPoints: (shape: ColShape) -> any
 declare getColShapeRadius: (shape: ColShape) -> number
 declare getColShapeSize: (shape: ColShape) -> (number, number, number)
 declare getColShapeType: (shape: ColShape) -> number
-declare getColorFromString: (theColor: string) -> (number, number, number, number)
 declare getCommandHandlers: (theResource: Resource?) -> any
 declare getCommandsBoundToKey: (theKey: string, keyState: string) -> any
 declare getControlState: (thePlayer: Player, controlName: string) -> boolean
@@ -1013,8 +1066,8 @@ declare getElementByIndex: (theType: string, index: number) -> Element
 declare getElementChild: (parent: Element, index: number) -> Element
 declare getElementChildren: (parent: Element, theType: string?) -> any
 declare getElementChildrenCount: (parent: Element) -> number
-declare getElementColShape: (theElement: Element) -> ColShape
 declare getElementCollisionsEnabled: (theElement: Element) -> boolean
+declare getElementColShape: (theElement: Element) -> ColShape
 declare getElementData: (theElement: Element, key: string, inherit: boolean?) -> any
 declare getElementDimension: (theElement: Element) -> number
 declare getElementDistanceFromCentreOfMassToBaseOfModel: (theElement: Element) -> number
@@ -1028,15 +1081,16 @@ declare getElementParent: (theElement: Element) -> Element
 declare getElementPosition: (theElement: Element) -> (number, number, number)
 declare getElementRadius: (theElement: Element) -> number
 declare getElementRotation: (theElement: Element, rotOrder: string?) -> (number, number, number)
+declare getElementsByType: (theType: string, startat: Element?) -> { [number]: Element }
+declare getElementsWithinColShape: (theShape: ColShape, elemType: string?) -> any
+declare getElementsWithinRange: (x: number, y: number, z: number, range: number, elemType: string?, interior: number?, dimension: number?) -> any
 declare getElementSyncer: (theElement: Element) -> Element
 declare getElementType: (theElement: Element) -> string
 declare getElementVelocity: (theElement: Element) -> (number, number, number)
-declare getElementsWithinColShape: (theShape: ColShape, elemType: string?) -> any
-declare getElementsWithinRange: (x: number, y: number, z: number, range: number, elemType: string?, interior: number?, dimension: number?) -> any
 declare getEventHandlers: (eventName: string, attachedTo: Element) -> any
-declare getFPSLimit: () -> number
 declare getFarClipDistance: () -> number
 declare getFogDistance: () -> number
+declare getFPSLimit: () -> number
 declare getFunctionsBoundToKey: (thePlayer: Player, key: string, keyState: string) -> any
 declare getGameSpeed: () -> number
 declare getGameType: () -> string
@@ -1052,10 +1106,10 @@ declare getInteriorFurnitureEnabled: (roomID: number) -> boolean
 declare getInteriorSoundsEnabled: () -> boolean
 declare getJetpackMaxHeight: () -> number
 declare getJetpackWeaponEnabled: (weapon: string) -> boolean
+declare getKeyboardLayout: () -> any
 declare getKeyBoundToCommand: (command: string) -> string
 declare getKeyBoundToFunction: (thePlayer: Player, theFunction: any) -> string
 declare getKeyState: (keyName: string) -> boolean
-declare getKeyboardLayout: () -> any
 declare getLatentEventHandles: (thePlayer: Player) -> any
 declare getLatentEventStatus: (thePlayer: Player, handle: number) -> any
 declare getLightColor: (theLight: Light) -> (number, number, number)
@@ -1063,8 +1117,8 @@ declare getLightDirection: (theLight: Light) -> (number, number, number)
 declare getLightRadius: (theLight: Light) -> number
 declare getLightType: (theLight: Light) -> number
 declare getLoadedModules: () -> any
-declare getLocalPlayer: () -> Player
 declare getLocalization: () -> any
+declare getLocalPlayer: () -> Player
 declare getLowLODElement: (theElement: Element) -> Element
 declare getMapName: () -> string
 declare getMarkerColor: (theMarker: Marker) -> (number, number, number, number)
@@ -1102,6 +1156,7 @@ declare getPedOccupiedVehicle: (thePed: Ped) -> Vehicle
 declare getPedOccupiedVehicleSeat: (thePed: Ped) -> number
 declare getPedOxygenLevel: (thePed: Ped) -> number
 declare getPedSimplestTask: (thePed: Ped) -> string
+declare getPedsLODDistance: () -> number
 declare getPedStat: (thePed: Ped, stat: number) -> number
 declare getPedTarget: (thePed: Ped) -> Element
 declare getPedTargetCollision: (targetingPed: Ped) -> (number, number, number)
@@ -1114,21 +1169,20 @@ declare getPedWalkingStyle: (thePed: Ped) -> number
 declare getPedWeapon: (thePed: Ped, weaponSlot: number?) -> number
 declare getPedWeaponMuzzlePosition: (thePed: Ped) -> (number, number, number)
 declare getPedWeaponSlot: (thePed: Ped) -> number
-declare getPedsLODDistance: () -> number
 declare getPerformanceStats: (category: string, options: string?, filter: string?) -> (any, any)
 declare getPickupAmmo: (thePickup: Pickup) -> number
 declare getPickupAmount: (thePickup: Pickup) -> number
 declare getPickupRespawnInterval: (thePickup: Pickup) -> number
 declare getPickupType: (thePickup: Pickup) -> number
 declare getPickupWeapon: (thePickup: Pickup) -> number
-declare getPlayerACInfo: (thePlayer: Element) -> any
 declare getPlayerAccount: (thePlayer: Player) -> Account
+declare getPlayerACInfo: (thePlayer: Element) -> any
 declare getPlayerAnnounceValue: (thePlayer: Element, key: string) -> string
 declare getPlayerBlurLevel: (thePlayer: Player) -> number
 declare getPlayerCount: () -> number
 declare getPlayerFromName: (playerName: string) -> Player
-declare getPlayerIP: (thePlayer: Player) -> string
 declare getPlayerIdleTime: (thePlayer: Player) -> number
+declare getPlayerIP: (thePlayer: Player) -> string
 declare getPlayerMapBoundingBox: () -> (number, number, number, number)
 declare getPlayerMapOpacity: () -> number
 declare getPlayerMoney: (thePlayer: Player) -> number
@@ -1138,10 +1192,10 @@ declare getPlayerNametagText: (thePlayer: Player) -> string
 declare getPlayerPing: (thePlayer: Player) -> number
 declare getPlayerScriptDebugLevel: (thePlayer: Player) -> number
 declare getPlayerSerial: (thePlayer: Player) -> string
+declare getPlayersInTeam: (theTeam: Team) -> any
 declare getPlayerTeam: (thePlayer: Player) -> Team
 declare getPlayerVersion: (thePlayer: Player) -> string
 declare getPlayerWantedLevel: (thePlayer: Player) -> number
-declare getPlayersInTeam: (theTeam: Team) -> any
 declare getProcessMemoryStats: () -> any
 declare getProjectileCounter: (projectile: Projectile) -> number
 declare getProjectileCreator: (theProjectile: Projectile) -> Element
@@ -1169,12 +1223,12 @@ declare getResourceLoadTime: (res: Resource) -> number
 declare getResourceMapRootElement: (theResource: Resource, mapName: string) -> Element
 declare getResourceName: (res: Resource) -> string
 declare getResourceOrganizationalPath: (theResource: Resource) -> string
-declare getResourceState: (theResource: Resource) -> string
+declare getResourceRootElement: (resource: Resource?) -> Element
 declare getResources: () -> any
+declare getResourceState: (theResource: Resource) -> string
 declare getRoofPosition: (x: number, y: number, z: number) -> number
 declare getRootElement: () -> Element
 declare getRuleValue: (key: string) -> string
-declare getSFXStatus: (audioContainer: string) -> boolean
 declare getScreenFromWorldPosition: (x: number, y: number, z: number, edgeTolerance: number?, relative: boolean?) -> (number, number, number)
 declare getSearchLightEndPosition: (theSearchLight: Searchlight) -> (number, number, number)
 declare getSearchLightEndRadius: (theSearchLight: Searchlight) -> number
@@ -1185,6 +1239,7 @@ declare getServerHttpPort: () -> number
 declare getServerName: () -> string
 declare getServerPassword: () -> string
 declare getServerPort: () -> number
+declare getSFXStatus: (audioContainer: string) -> boolean
 declare getSkyGradient: () -> (number, number, number, number, number, number)
 declare getSlotFromWeapon: (weaponid: number) -> number
 declare getSoundBPM: (sound: Element) -> number
@@ -1214,6 +1269,7 @@ declare getTickCount: () -> number
 declare getTime: () -> (number, number)
 declare getTimerDetails: (theTimer: Timer) -> (number, number, number)
 declare getTimers: (theTime: number?) -> any
+declare gettok: (text: string, tokenNumber: number, separatingCharacter: string | number ) -> string
 declare getTrafficLightState: () -> number
 declare getTrainDirection: (train: Vehicle) -> boolean
 declare getTrainPosition: (train: Vehicle) -> number
@@ -1228,9 +1284,9 @@ declare getVehicleColor: (theVehicle: Vehicle, bRGB: boolean) -> (number, number
 declare getVehicleCompatibleUpgrades: (theVehicle: Vehicle, slot: number?) -> any
 declare getVehicleComponentPosition: (theVehicle: Vehicle, theComponent: string, base: string?) -> (number, number, number)
 declare getVehicleComponentRotation: (theVehicle: Vehicle, theComponent: string, base: string?) -> (number, number, number)
+declare getVehicleComponents: (theVehicle: Vehicle) -> any
 declare getVehicleComponentScale: (theVehicle: Vehicle, theComponent: string, base: string?) -> (number, number, number)
 declare getVehicleComponentVisible: (theVehicle: Vehicle, theComponent: string) -> boolean
-declare getVehicleComponents: (theVehicle: Vehicle) -> any
 declare getVehicleController: (theVehicle: Vehicle) -> Player
 declare getVehicleCurrentGear: (theVehicle: Vehicle) -> number
 declare getVehicleDoorOpenRatio: (theVehicle: Vehicle, door: number) -> number
@@ -1242,6 +1298,8 @@ declare getVehicleHandling: (theVehicle: Element) -> any
 declare getVehicleHeadLightColor: (theVehicle: Vehicle) -> (number, number, number)
 declare getVehicleLandingGearDown: (theVehicle: Vehicle) -> boolean
 declare getVehicleLightState: (theVehicle: Vehicle, light: number) -> number
+declare getVehicleMaxPassengers: (modelID: number) -> number
+declare getVehicleMaxPassengers: (vehicle: Vehicle) -> number
 declare getVehicleModelDummyDefaultPosition: (modelId: number, dummy: string) -> (number, number, number)
 declare getVehicleModelDummyPosition: (modelID: number, dummy: string) -> (number, number, number)
 declare getVehicleModelExhaustFumesPosition: (modelID: number) -> (number, number, number)
@@ -1251,6 +1309,7 @@ declare getVehicleName: (theVehicle: Vehicle) -> string
 declare getVehicleNameFromModel: (model: number) -> string
 declare getVehicleNitroCount: (theVehicle: Vehicle) -> number
 declare getVehicleNitroLevel: (theVehicle: Vehicle) -> number
+declare getVehicleOccupant: (vehicle: Vehicle, seat: number?) -> Player
 declare getVehicleOccupants: (theVehicle: Vehicle) -> any
 declare getVehicleOverrideLights: (theVehicle: Vehicle) -> number
 declare getVehiclePaintjob: (theVehicle: Vehicle) -> number
@@ -1261,6 +1320,8 @@ declare getVehicleRespawnRotation: (theVehicle: Element) -> (number, number, num
 declare getVehicleSirenParams: (theVehicle: Vehicle) -> any
 declare getVehicleSirens: (theVehicle: Vehicle) -> any
 declare getVehicleSirensOn: (theVehicle: Vehicle) -> boolean
+declare getVehiclesLODDistance: () -> (number, number)
+declare getVehiclesOfType: (model: number) -> any
 declare getVehicleTowedByVehicle: (theVehicle: Vehicle) -> Vehicle
 declare getVehicleTowingVehicle: (theVehicle: Vehicle) -> Vehicle
 declare getVehicleTurnVelocity: (theVehicle: Vehicle) -> (number, number, number)
@@ -1268,12 +1329,12 @@ declare getVehicleTurretPosition: (turretVehicle: Vehicle) -> (number, number)
 declare getVehicleType: (theVehicle: Vehicle) -> string
 declare getVehicleUpgradeOnSlot: (theVehicle: Vehicle, slot: number) -> number
 declare getVehicleUpgrades: (theVehicle: Vehicle) -> any
+declare getVehicleUpgradeSlotName: (slot: number) -> string
+declare getVehicleUpgradeSlotName: (upgrade: number) -> string
 declare getVehicleVariant: (theVehicle: Vehicle) -> (number, number)
 declare getVehicleWheelFrictionState: (theVehicle: Vehicle, wheel: number) -> number
 declare getVehicleWheelScale: (theVehicle: Vehicle) -> number
 declare getVehicleWheelStates: (theVehicle: Vehicle) -> (number, number, number, number)
-declare getVehiclesLODDistance: () -> (number, number)
-declare getVehiclesOfType: (model: number) -> any
 declare getVersion: () -> any
 declare getWaterColor: () -> (number, number, number, number)
 declare getWaterLevel: (posX: number, posY: number, posZ: number?, ignoreDistanceToWaterThreshold: boolean?) -> number
@@ -1286,11 +1347,16 @@ declare getWeaponFlags: (theWeapon: Weapon, theFlag: string) -> boolean
 declare getWeaponIDFromName: (name: string) -> number
 declare getWeaponNameFromID: (id: number) -> string
 declare getWeaponOwner: (theWeapon: Weapon) -> boolean
+declare getWeaponProperty: (weaponID: number, weaponSkill: string, property: string) -> number
+declare getWeaponProperty: (weaponName: string, weaponSkill: string, property: string) -> number
 declare getWeaponState: (theWeapon: Weapon) -> string
 declare getWeather: () -> (number, number)
 declare getWindVelocity: () -> (number, number, number)
 declare getWorldFromScreenPosition: (x: number, y: number, depth: number) -> (number, number, number)
+declare getZoneName: (x: number, y: number, z: number, citiesonly: boolean?) -> string
+declare givePedWeapon: (ped: Ped, weapon: number, ammo: number?, setAsCurrent: boolean?) -> boolean
 declare givePlayerMoney: (thePlayer: Player, amount: number) -> boolean
+declare giveWeapon: (player: Ped, weapon: number, ammo: number?, setAsCurrent: boolean?) -> boolean
 declare guiBlur: (guiElement: Element) -> boolean
 declare guiBringToFront: (guiElement: Element) -> boolean
 declare guiCheckBoxGetSelected: (theCheckbox: Element) -> boolean
@@ -1310,11 +1376,13 @@ declare guiCreateButton: (x: number, y: number, width: number, height: number, t
 declare guiCreateCheckBox: (x: number, y: number, width: number, height: number, text: string, selected: boolean, relative: boolean, parent: Element?) -> Element
 declare guiCreateComboBox: (x: number, y: number, width: number, height: number, caption: string, relative: boolean, parent: Element?) -> Element
 declare guiCreateEdit: (x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: Element?) -> Element
+declare guiCreateFont: (filepath: string, size: number?) -> Element
 declare guiCreateGridList: (x: number, y: number, width: number, height: number, relative: boolean, parent: Element?) -> Element
 declare guiCreateLabel: (x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: Element?) -> Element
 declare guiCreateMemo: (x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: Element?) -> any
 declare guiCreateProgressBar: (x: number, y: number, width: number, height: number, relative: boolean, parent: Element?) -> Element
 declare guiCreateRadioButton: (x: number, y: number, width: number, height: number, text: string, relative: boolean, parent: Element?) -> Element
+declare guiCreateScrollBar: (x: number, y: number, width: number, height: number, horizontal: boolean, relative: boolean, parent: GUIElement?) -> Scrollbar
 declare guiCreateScrollPane: (x: number, y: number, width: number, height: number, relative: boolean, parent: any?) -> Element
 declare guiCreateStaticImage: (x: number, y: number, width: number, height: number, path: string, relative: boolean, parent: Element?) -> Element
 declare guiCreateTab: (text: string, parent: Element) -> Element
@@ -1432,6 +1500,7 @@ declare injectBrowserMouseUp: (webBrowser: Browser, mouseButton: string) -> bool
 declare injectBrowserMouseWheel: (webBrowser: Browser, verticalScroll: number, horizontalScroll: number) -> boolean
 declare inspect: (var: any, options: any?) -> string
 declare interpolateBetween: (x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, fProgress: number, strEasingType: string, fEasingPeriod: number?, fEasingAmplitude: number?, fEasingOvershoot: number?) -> (number, number, number)
+declare iprint: (...any) -> boolean
 declare isAmbientSoundEnabled: (theType: string) -> boolean
 declare isBan: (theBan: Ban) -> boolean
 declare isBrowserDomainBlocked: (address: string, isURL: boolean?) -> boolean
@@ -1471,11 +1540,11 @@ declare isInsideColShape: (theShape: ColShape, posX: number, posY: number, posZ:
 declare isInsideRadarArea: (theArea: RadarArea, posX: number, posY: number) -> boolean
 declare isKeyBound: (thePlayer: Player, key: string, keyState: string?, handler: any?) -> boolean
 declare isLineOfSightClear: (startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, checkBuildings: boolean?, checkVehicles: boolean?, checkPeds: boolean?, checkObjects: boolean?, checkDummies: boolean?, seeThroughStuff: boolean?, ignoreSomeObjectsForCamera: boolean?, ignoredElement: Element?) -> boolean
-declare isMTAWindowActive: () -> boolean
 declare isMainMenuActive: () -> boolean
-declare isOOPEnabled: () -> boolean
+declare isMTAWindowActive: () -> boolean
 declare isObjectInACLGroup: (theObjectName: string, theGroup: ACLGroup) -> boolean
 declare isObjectMoving: (theObject: Object) -> boolean
+declare isOOPEnabled: () -> boolean
 declare isPedBleeding: (thePed: Ped) -> boolean
 declare isPedChoking: (thePed: Ped) -> boolean
 declare isPedDead: (thePed: Ped) -> boolean
@@ -1525,6 +1594,8 @@ declare isVoiceEnabled: () -> boolean
 declare isWaterDrawnLast: () -> boolean
 declare isWorldSoundEnabled: (group: number, index: number?) -> boolean
 declare isWorldSpecialPropertyEnabled: (propname: string) -> boolean
+declare kickPlayer: (kickedPlayer: Player, responsiblePlayer: Player? | string?, reason: string?) -> boolean
+declare killPed: (ped: Ped, killer: Ped?, weapon: number?, bodyPart: number?, stealth: boolean?) -> boolean
 declare killTimer: (theTimer: Timer) -> boolean
 declare loadBrowserURL: (webBrowser: Browser, url: string, postData: string?, urlEncoded: boolean?) -> boolean
 declare loadMapData: (node: XMLNode, parent: Element) -> Element
@@ -1534,6 +1605,7 @@ declare md5: (str: string) -> string
 declare moveObject: (theObject: Object, time: number, targetx: number, targety: number, targetz: number, moverx: number?, movery: number?, moverz: number?, strEasingType: string?, fEasingPeriod: number?, fEasingAmplitude: number?, fEasingOvershoot: number?) -> boolean
 declare navigateBrowserBack: (webBrowser: Browser) -> boolean
 declare navigateBrowserForward: (webBrowser: Browser) -> boolean
+declare outputChatBox: (text: string, visibleTo: Element | { [number]: Element }?, r: number?, g: number?, b: number?, colorCoded: boolean) -> boolean
 declare outputConsole: (text: string) -> boolean
 declare outputServerLog: (text: string) -> boolean
 declare passwordHash: (password: string, algorithm: string, options: any, callback: any?) -> string
@@ -1633,10 +1705,10 @@ declare setCameraTarget: (thePlayer: Player, target: Player?) -> boolean
 declare setCameraViewMode: (vehicleCameraMode: number, pedCameraMode: number?) -> boolean
 declare setClipboard: (theText: string) -> boolean
 declare setCloudsEnabled: (enabled: boolean) -> boolean
+declare setColorFilter: (aRed: number, aGreen: number, aBlue: number, aAlpha: number, bRed: number, bGreen: number, bBlue: number, bAlpha: number) -> boolean
 declare setColPolygonHeight: (shape: ColShape, floor: number, ceil: number) -> boolean
 declare setColPolygonPointPosition: (shape: ColShape, index: number, fX: number, fY: number) -> boolean
 declare setColShapeRadius: (shape: ColShape, radius: number) -> boolean
-declare setColorFilter: (aRed: number, aGreen: number, aBlue: number, aAlpha: number, bRed: number, bGreen: number, bBlue: number, bAlpha: number) -> boolean
 declare setControlState: (thePlayer: Player, control: string, state: boolean) -> boolean
 declare setCoronaReflectionEnabled: (theMarker: Marker, enabled: boolean) -> boolean
 declare setCoronaReflectionsEnabled: (enabled: number) -> boolean
@@ -1671,9 +1743,9 @@ declare setElementStreamable: (theElement: Element, streamable: boolean) -> bool
 declare setElementSyncer: (theElement: Element, thePlayer: Player) -> boolean
 declare setElementVelocity: (theElement: Element, speedX: number, speedY: number, speedZ: number) -> boolean
 declare setElementVisibleTo: (theElement: Element, visibleTo: Element, visible: boolean) -> boolean
-declare setFPSLimit: (fpsLimit: number) -> boolean
 declare setFarClipDistance: (distance: number) -> boolean
 declare setFogDistance: (distance: number) -> boolean
+declare setFPSLimit: (fpsLimit: number) -> boolean
 declare setGameSpeed: (value: number) -> boolean
 declare setGameType: (gameType: string) -> boolean
 declare setGarageOpen: (garageID: number, open: boolean) -> boolean
@@ -1726,13 +1798,13 @@ declare setPedGravity: (thePed: Ped, gravity: number) -> boolean
 declare setPedHeadless: (thePed: Ped, headState: boolean) -> boolean
 declare setPedOnFire: (thePed: Ped, isOnFire: boolean) -> boolean
 declare setPedOxygenLevel: (thePed: Ped, oxygen: number) -> boolean
+declare setPedsLODDistance: (distance: number) -> boolean
 declare setPedStat: (thePed: Ped, stat: number, value: number) -> boolean
 declare setPedTargetingMarkerEnabled: (enabled: boolean) -> boolean
 declare setPedVoice: (thePed: Ped, voiceType: string, voiceName: string) -> boolean
 declare setPedWalkingStyle: (thePed: Ped, style: number) -> boolean
 declare setPedWeaponSlot: (thePed: Ped, weaponSlot: number) -> boolean
 declare setPedWearingJetpack: (thePed: Ped, state: boolean) -> boolean
-declare setPedsLODDistance: (distance: number) -> boolean
 declare setPickupRespawnInterval: (thePickup: Pickup, ms: number) -> boolean
 declare setPlayerAnnounceValue: (thePlayer: Element, key: string, value: string) -> boolean
 declare setPlayerBlurLevel: (thePlayer: Player, level: number) -> boolean
@@ -1779,8 +1851,9 @@ declare setTeamColor: (theTeam: Team, colorR: number, colorG: number, colorB: nu
 declare setTeamFriendlyFire: (theTeam: Team, friendlyFire: boolean) -> boolean
 declare setTeamName: (theTeam: Team, newName: string) -> boolean
 declare setTime: (hour: number, minute: number) -> boolean
-declare setTrafficLightState: (state: number) -> boolean
+declare setTimer: (callback: any, timeInterval: number, timesToExecute: number, ...any?) -> Timer
 declare setTrafficLightsLocked: (toggle: boolean) -> boolean
+declare setTrafficLightState: (state: number) -> boolean
 declare setTrainDerailable: (derailableVehicle: Vehicle, derailable: boolean) -> boolean
 declare setTrainDerailed: (vehicleToDerail: Vehicle, derailed: boolean) -> boolean
 declare setTrainDirection: (train: Vehicle, clockwise: boolean) -> boolean
@@ -1825,6 +1898,7 @@ declare setVehicleRespawnPosition: (theVehicle: Vehicle, x: number, y: number, z
 declare setVehicleRespawnRotation: (theVehicle: Vehicle, rx: number, ry: number, rz: number) -> boolean
 declare setVehicleSirens: (theVehicle: Vehicle, sirenPoint: number, posX: number, posY: number, posZ: number, red: number, green: number, blue: number, alpha: number?, minAlpha: number?) -> boolean
 declare setVehicleSirensOn: (theVehicle: Vehicle, sirensOn: boolean) -> boolean
+declare setVehiclesLODDistance: (vehiclesDistance: number, trainsAndPlanesDistance: number?) -> boolean
 declare setVehicleTaxiLightOn: (taxi: Vehicle, LightState: boolean) -> boolean
 declare setVehicleTurnVelocity: (theVehicle: Vehicle, rx: number, ry: number, rz: number) -> boolean
 declare setVehicleTurretPosition: (turretVehicle: Vehicle, positionX: number, positionY: number) -> boolean
@@ -1832,7 +1906,6 @@ declare setVehicleVariant: (theVehicle: Vehicle, variant1: number?, variant2: nu
 declare setVehicleWheelScale: (theVehicle: Vehicle, wheelScale: number) -> boolean
 declare setVehicleWheelStates: (theVehicle: Vehicle, frontLeft: number, rearLeft: number?, frontRight: number?, rearRight: number?) -> boolean
 declare setVehicleWindowOpen: (theVehicle: Vehicle, window: number, open: boolean) -> boolean
-declare setVehiclesLODDistance: (vehiclesDistance: number, trainsAndPlanesDistance: number?) -> boolean
 declare setWaterColor: (red: number, green: number, blue: number, alpha: number?) -> boolean
 declare setWaterDrawnLast: (bEnabled: boolean) -> boolean
 declare setWaterLevel: (theWater: Water?, level: number?) -> boolean
@@ -1845,8 +1918,9 @@ declare setWeaponFlags: (theWeapon: Weapon, theFlag: string, enable: boolean) ->
 declare setWeaponState: (theWeapon: Weapon, theState: string) -> boolean
 declare setWeather: (weatherID: number) -> boolean
 declare setWeatherBlended: (weatherID: number) -> boolean
-declare setWindVelocity: (velocityX: number, velocityY: number, velocityZ: number) -> boolean
 declare setWindowFlashing: (shouldFlash: boolean, count: number?) -> boolean
+declare setWindVelocity: (velocityX: number, velocityY: number, velocityZ: number) -> boolean
+declare setWorldSoundEnabled: (group: number, index: number?, enable: boolean, immediate: boolean?) -> boolean
 declare setWorldSpecialPropertyEnabled: (propname: string, enable: boolean) -> boolean
 declare sha256: (str: string) -> string
 declare showChat: (show: boolean, inputBlocked: boolean?) -> boolean
@@ -1856,6 +1930,7 @@ declare showSound: (state: boolean) -> boolean
 declare shutdown: (reason: string?) -> boolean
 declare spawnPlayer: (thePlayer: Player, x: number, y: number, z: number, rotation: number?, skinID: number?, interior: number?, dimension: number?, theTeam: Team?) -> boolean
 declare spawnVehicle: (theVehicle: Vehicle, x: number, y: number, z: number, rx: number?, ry: number?, rz: number?) -> boolean
+declare split: (stringToSplit: string, separatingChar: string | number) -> { [any]: any }
 declare startResource: (resourceToStart: Resource, persistent: boolean?, startIncludedResources: boolean?, loadServerConfigs: boolean?, loadMaps: boolean?, loadServerScripts: boolean?, loadHTML: boolean?, loadClientConfigs: boolean?, loadClientScripts: boolean?, loadFiles: boolean?) -> boolean
 declare stopObject: (theobject: Object) -> boolean
 declare stopResource: (theResource: Resource) -> boolean
@@ -1898,7 +1973,11 @@ declare toggleBrowserDevTools: (webBrowser: Browser, visible: boolean) -> boolea
 declare toggleControl: (thePlayer: Player, control: string, enabled: boolean) -> boolean
 declare toggleObjectRespawn: (theObject: Object, respawn: boolean) -> boolean
 declare toggleVehicleRespawn: (theVehicle: Vehicle, Respawn: boolean) -> boolean
+declare toJSON: (value: any, compact: boolean?, prettyType: string?) -> string
+declare triggerClientEvent: (sendTo: { [number]: Element }? | Element?, name: string, sourceElement: Element, ...any?) -> boolean
 declare triggerEvent: (eventName: string, baseElement: Element, argument1: any?, ...any?) -> boolean
+declare triggerLatentClientEvent: ({ [number]: Element }? | Element?, name: string, bandwidth: number?, persist: boolean?, element: Element, ...any?) -> boolean
+declare triggerLatentServerEvent: (event: string, bandwidth: number?, persist: boolean?, element: Element, ...any?) -> boolean
 declare triggerServerEvent: (event: string, theElement: Element, ...any?) -> boolean
 declare unbindKey: (thePlayer: Player, key: string, keyState: string, command: string) -> boolean
 declare updateElementRpHAnim: (theElement: Element) -> boolean
@@ -1909,6 +1988,7 @@ declare utfCode: (theString: string) -> number
 declare utfLen: (theString: string) -> number
 declare utfSeek: (theString: string, position: number) -> number
 declare utfSub: (theString: string, Start: number, End: number) -> string
+declare warpPedIntoVehicle: (ped: Ped, vehicle: Vehicle, seat: number?) -> boolean
 declare wasEventCancelled: () -> boolean
 declare xmlCopyFile: (nodeToCopy: XMLNode, newFilePath: string) -> XMLNode
 declare xmlCreateChild: (parentNode: XMLNode, tagName: string) -> XMLNode
@@ -1919,15 +1999,18 @@ declare xmlLoadFile: (filePath: string, readOnly: boolean?) -> XMLNode
 declare xmlLoadString: (xmlString: string) -> XMLNode
 declare xmlNodeGetAttribute: (node: XMLNode, name: string) -> string
 declare xmlNodeGetAttributes: (node: XMLNode) -> any
+declare xmlNodeGetChildren: (parent: XMLNode, index: number?) -> XMLNode | { [number]: XMLNode }
 declare xmlNodeGetName: (node: XMLNode) -> string
 declare xmlNodeGetParent: (node: XMLNode) -> XMLNode
 declare xmlNodeGetValue: (theXMLNode: XMLNode) -> string
+declare xmlNodeSetAttribute: (node: XMLNode, name: string, value: string | number) -> boolean
 declare xmlNodeSetName: (node: XMLNode, name: string) -> boolean
 declare xmlNodeSetValue: (theXMLNode: XMLNode, value: string, setCDATA: boolean?) -> boolean
 declare xmlSaveFile: (rootNode: XMLNode) -> boolean
 declare xmlUnloadFile: (node: XMLNode) -> boolean
 
 declare utf8: {
+    char: (...number?) -> string,
     escape: (input: string) -> string,
     find: (input: string, pattern: string, startpos: number?, plain: boolean?) -> (number, number),
     fold: (input: any) -> any,
@@ -1937,6 +2020,7 @@ declare utf8: {
     len: (input: string, i: number?, j: number?) -> number,
     fold: (input: any) -> any,
     ncasecmp: (a: string, b: string) -> number,
+    next: (input: string, charpos: number?, offset: number?) -> (number, number),
     remove: (input: string, start: number, stop: number?) -> string,
     reverse: (input: string) -> string,
     sub: (input: string, i: number?, j: number?) -> string,
@@ -1963,18 +2047,18 @@ declare sourceResourceRoot: any
 declare sourceTimer: any
 
 declare string: {
-	byte: (s: string, i: number?, j: number?) -> any,
-	char: (...any) -> string,
-	dump: (fn: any) -> string,
-	find: (s: string, pattern: string, init: number?, plain: boolean?) -> (number, number, ...any),
-	format: (s: string, ...any) -> string,
-	gmatch: (s: string, pattern: string) -> any,
-	gsub: (s: string, pattern: string, replacement: string, n: number?) -> string,
-	len: (s: string) -> number,
-	lower: (s: string) -> string,
-	match: (s: string, pattern: string, init: number?) -> ...any,
-	rep: (s: string, n: number) -> string,
-	reverse: (s: string) -> string,
-	sub: (s: string, i: number, j: number?) -> string,
-	upper: (s: string) -> string,
+    byte: (s: string, i: number?, j: number?) -> any,
+    char: (...any) -> string,
+    dump: (fn: any) -> string,
+    find: (s: string, pattern: string, init: number?, plain: boolean?) -> (number, number, ...any),
+    format: (s: string, ...any) -> string,
+    gmatch: (s: string, pattern: string) -> any,
+    gsub: (s: string, pattern: string, replacement: string, n: number?) -> string,
+    len: (s: string) -> number,
+    lower: (s: string) -> string,
+    match: (s: string, pattern: string, init: number?) -> ...any,
+    rep: (s: string, n: number) -> string,
+    reverse: (s: string) -> string,
+    sub: (s: string, i: number, j: number?) -> string,
+    upper: (s: string) -> string,
 }

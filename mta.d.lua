@@ -1605,7 +1605,7 @@ declare md5: (str: string) -> string
 declare moveObject: (theObject: Object, time: number, targetx: number, targety: number, targetz: number, moverx: number?, movery: number?, moverz: number?, strEasingType: string?, fEasingPeriod: number?, fEasingAmplitude: number?, fEasingOvershoot: number?) -> boolean
 declare navigateBrowserBack: (webBrowser: Browser) -> boolean
 declare navigateBrowserForward: (webBrowser: Browser) -> boolean
-declare outputChatBox: (text: string, visibleTo: Element | { [number]: Element }?, r: number?, g: number?, b: number?, colorCoded: boolean) -> boolean
+declare outputChatBox: (text: string, visibleTo: Element | { [number]: Element }?, r: number?, g: number?, b: number?, colorCoded: boolean?) -> boolean
 declare outputConsole: (text: string) -> boolean
 declare outputServerLog: (text: string) -> boolean
 declare passwordHash: (password: string, algorithm: string, options: any, callback: any?) -> string
